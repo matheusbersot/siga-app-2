@@ -1,28 +1,5 @@
-var modController = angular.module('mod_controller',[]);
+var modController = angular.module('myApp.controllers', ['myApp.services']);
 
 modController.controller('HomeController', ['$scope', function($scope) {
 
 }]);
-
-modController.config(function($stateProvider, $urlRouterProvider) {
-
-  $urlRouterProvider.otherwise('/home');
-
-  $stateProvider.state('home', {
-    url: '/home',
-    views: {
-      home: {
-        templateUrl: 'home.html'
-      }
-    }
-  });
-
-  $stateProvider.state('cadastro', {
-    url: '/cadastro',
-    views: {
-      cadastro: {
-        templateUrl: 'cadastro.html'
-      }
-    }
-  });
-});

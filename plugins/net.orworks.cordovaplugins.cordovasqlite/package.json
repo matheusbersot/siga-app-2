@@ -1,0 +1,24 @@
+{
+    "version": "1.5.0",
+    "name": "net.orworks.cordovaplugins.cordovasqlite",
+    "cordova_name": "CordovaSQLite",
+    "description": "Cordova SQLite Plugin",
+    "license": "Apache 2.0",
+    "repo": "https://github.com/samikrc/CordovaSQLite.git",
+    "issue": "https://github.com/samikrc/CordovaSQLite/issues",
+    "keywords": [
+        "cordova",
+        "sqlite"
+    ],
+    "platforms": [
+        "android",
+        "ios",
+        "browser"
+    ],
+    "engines": [
+        {
+            "name": "cordova",
+            "version": ">=3.4.0"
+        }
+    ]
+}

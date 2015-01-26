@@ -1,19 +1,19 @@
 <ion-view>
-    <ion-content padding="true" style="background-color:#F1F1F2">
+    <ion-content padding="true" style="background-color:#F1F1F2"  ng-controller="CadastroController">
 
         <ion-header-bar class="bar-light-blue">
             <button class="button button-icon icon ion-ios7-arrow-back" style="position: absolute;top:0px; bottom:0px" ui-sref="home">
             </button>
             <img src="img/uff.gif"  id="logo-uff"/>
             <h1 class="title" style="text-align: left; font-weight: bold;">UFF Processos</h1>
-            <button class="button button-icon fa fa-floppy-o" style="top:0px; bottom:0px"></button>
+            <button class="button button-icon fa fa-floppy-o" style="top:0px; bottom:0px" ng-click="salvarProcesso()"></button>
         </ion-header-bar>
 
         <br/>
         <br/>
 
         <div class="painel_cadastro">
-            <form name="formCadastroProcesso" ng-controller="CadastroController"> <!-- ui-sref="resultado" -->
+            <form name="formCadastroProcesso"> <!-- ui-sref="resultado" -->
                 <span class="input-label"  style="width: 100%; padding-top: 20px;">Descrição</span>
                 <input class="custom-input" type="text" maxlength="17" ng-model="descricao">
                 <span class="input-label" style="width: 100%; padding-top: 20px;">Número do Processo</span>
