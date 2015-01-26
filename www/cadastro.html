@@ -2,46 +2,26 @@
     <ion-content padding="true" style="background-color:#F1F1F2">
 
         <ion-header-bar class="bar-light-blue">
-            <button class="button button-icon icon ion-ios7-arrow-back" style="position: absolute;top:0px; bottom:0px">
+            <button class="button button-icon icon ion-ios7-arrow-back" style="position: absolute;top:0px; bottom:0px" ui-sref="home">
             </button>
-            <h1 class="title">
-                <img src="img/uff.gif" style="width: 60px; heigth: 25px"/> Consulta Processos
-            </h1>
+            <img src="img/uff.gif"  id="logo-uff"/>
+            <h1 class="title" style="text-align: left; font-weight: bold;">UFF Processos</h1>
             <button class="button button-icon fa fa-floppy-o" style="top:0px; bottom:0px"></button>
         </ion-header-bar>
 
+        <br/>
+        <br/>
+
         <div class="painel_cadastro">
             <form name="formCadastroProcesso" ng-controller="CadastroController"> <!-- ui-sref="resultado" -->
-
-
-                <input class="text-center" type="text" maxlength="17" ng-model="descricao">
-                <input class="text-center" type="text" maxlength="17" ng-model="numProcesso">
-
-
-
-                <div class="bar">
-                    <h4 class="title" style="color: #0c63ee; font-family: Arial, san-serif; font-size: 18px">Número do
-                        Processo</h4>
-                </div>
-                <br/>
-                <br/>
-                <br/>
-                <input class="text-center" type="text" maxlength="17" ng-model="numProcesso">
-                <br/>
-
-                <div class="text-center">
-                    <button class="button button-outline button-positive icon-left ion-ios-search-strong">
-                        Buscar
-                    </button>
-                </div>
+                <span class="input-label"  style="width: 100%; padding-top: 20px;">Descrição</span>
+                <input class="custom-input" type="text" maxlength="17" ng-model="descricao">
+                <span class="input-label" style="width: 100%; padding-top: 20px;">Número do Processo</span>
+                <input class="custom-input" type="text" maxlength="17" ng-model="numProcesso" placeholder="Ex: 23069000000201501">
             </form>
             <br/>
             <br/>
             <br/>
-
-            <div class="text-center" style="color: #0c63ee;">
-                Para efetuar uma consulta, digite o número do processo sem barra (/) e sem hifén (-).
-            </div>
         </div>
     </ion-content>
 </ion-view>

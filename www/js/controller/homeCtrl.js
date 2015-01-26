@@ -4,7 +4,7 @@ modController.controller('HomeController', ['$scope', function($scope) {
 
 }]);
 
-modController.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+modController.config(function($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise('/home');
 
