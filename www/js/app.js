@@ -1,9 +1,9 @@
 // Ionic Starter App
 
 // Inicializando módulos
-angular.module('myApp.config',[]);
-angular.module('myApp.services', ['myApp.config']);
-angular.module('myApp.controllers', ['myApp.services', 'ui.router', 'ui.bootstrap']);
+angular.module('myApp.config', []);
+angular.module('myApp.services', []);
+angular.module('myApp.controllers', []);
 
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -11,6 +11,22 @@ angular.module('myApp.controllers', ['myApp.services', 'ui.router', 'ui.bootstra
 // the 2nd parameter is an array of 'requires'
 
 angular.module('myApp', ['ionic', 'ui.router', 'ui.bootstrap', 'myApp.controllers', 'myApp.services', 'myApp.config'])
+
+    .config(function ($stateProvider, $urlRouterProvider) {
+
+        $urlRouterProvider.otherwise('/home');
+
+        $stateProvider
+            .state('home', {
+                url: '/home',
+                templateUrl: 'home.html'
+            })
+            .state('cadastro', {
+                url: '/cadastro',
+                templateUrl: 'cadastro.html'
+            });
+    })
+
 
     .run(function ($ionicPlatform, DB) {
         $ionicPlatform.ready(function () {
@@ -25,5 +41,6 @@ angular.module('myApp', ['ionic', 'ui.router', 'ui.bootstrap', 'myApp.controller
 
             //Inicializando o banco de dados
             DB.init();
-        });
-    })
+        })
+    });
+
