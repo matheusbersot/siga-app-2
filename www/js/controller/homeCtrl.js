@@ -1,6 +1,6 @@
 var modController = angular.module('myApp.controllers');
 
-modController.controller('HomeController', ['$scope', 'DB', function ($scope, DB) {
+modController.controller('HomeController', ['$scope', '$window', 'DB', function ($scope, $window, DB) {
 
     $scope.umPorVez = true;
 
@@ -51,6 +51,22 @@ modController.controller('HomeController', ['$scope', 'DB', function ($scope, DB
             function (razao) {
                 console.log('Falhou: ' + razao);
             });
+    }
+
+    $scope.removerProcesso = function (codProcesso) {
+        return DB.query('DELETE from processo WHERE descricao = ?', [codProcesso])
+            .then(function (resultado) {
+                refreshPage();
+                console.log("Removeu "+resultado.rowsAffected+" registro(s) na tabela.");
+            },
+            function (razao) {
+                console.log('Falhou: ' + razao.message);
+            });
+    }
+
+    refreshPage = function()
+    {
+        $window.location.reload();
     }
 
     buscarTodosProcessos();

@@ -16,7 +16,7 @@
                 <accordion-group ng-repeat="processo in processos" style="padding: 0px;">
                     <accordion-heading>
                         <div class="list card" style="margin: 0px 0px">
-                            <a href="#" class="item item-icon-left item-icon-right">
+                            <div class="item item-icon-left item-icon-right">
                                 <i class="icon ion-ios7-folder"></i>
                             <span>
                                 <p class="text">{{processo.descricao}}<p>
@@ -24,17 +24,17 @@
                              </span>
                                 <div class="icon">
                                 <button class="button button-icon ion-edit" style="font-size: 29px" ui-sref="editar"></button>
-                                <button class="button button-icon ion-trash-b" style="font-size: 29px" ui-sref="remover"></button>
+                                <button class="button button-icon ion-trash-b" style="font-size: 29px" ng-click="removerProcesso(processo.descricao)" ui-sref="home"></button>
                                 </div>
-                            </a>
+                            </div>
 
                         </div>
                     </accordion-heading>
                     <div class="list card" style="margin: 0px 0px">
                         <div class="item item-icon-left" ng-repeat="movimentacao in processo.movimentacoes">
 
-                            <i class="icon ion-arrow-right-a" ng-show={{movimentacao.primeira}}></i>
-                            <i class="icon ion-arrow-up-a" ng-show={{!movimentacao.primeira}}></i>
+                            <i class="icon ion-arrow-right-a" ng-show="movimentacao.primeira"></i>
+                            <i class="icon ion-arrow-up-a" ng-show="!movimentacao.primeira"></i>
                             <div class="underline_text"> {{movimentacao.tipoEvento}}</div>
                             <span>
                               <p class="text">{{movimentacao.dataEvento}}</p>
