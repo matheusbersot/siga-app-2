@@ -19,11 +19,13 @@ angular.module('myApp', ['ionic', 'ui.router', 'ui.bootstrap', 'myApp.controller
         $stateProvider
             .state('home', {
                 url: '/home',
-                templateUrl: 'home.html'
+                templateUrl: 'home.html',
+                cache: false
             })
             .state('cadastro', {
                 url: '/cadastro',
-                templateUrl: 'cadastro.html'
+                templateUrl: 'cadastro.html',
+                cache: false
             });
     })
 
