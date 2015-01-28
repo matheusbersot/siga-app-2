@@ -1,6 +1,6 @@
 var modController = angular.module('myApp.controllers');
 
-modController.controller('CadastroController', ['$scope', function ($scope) {
+modController.controller('CadastroController', ['$scope', 'DB', function ($scope, DB) {
 
     $scope.numProcesso = "";
     $scope.descricao = "";
@@ -10,23 +10,22 @@ modController.controller('CadastroController', ['$scope', function ($scope) {
         var resposta = buscarProcesso($scope.numProcesso);
         var respostaJson = JSON.parse(resposta);
 
-        if(!respostaJson.erro)
-        {
+        if (!respostaJson.erro) {
             var movimentacoes = resposta;
             var dataUltimaMovimentacao = respostaJson.resposta[0].dataEvento;
 
-            inserirProcesso(dataUltimaMovimentacao, movimentacoes);
+            var resp = inserirProcesso($scope.numProcesso, $scope.descricao,dataUltimaMovimentacao, movimentacoes);
+            var teste = "teste";
         }
-        else
-        {
+        else {
             //TODO: pensar no que fazer ( talvez mostrar modal dizendo que foi impossivel salvar, pois o numero do processo está errado").;
         }
     }
 
-    buscarProcesso= function(numeroProcesso) {
+    buscarProcesso = function (numeroProcesso) {
 
         /* buscar movimentacoes do processo */
-        var url = "http://192.168.1.50:8081/sigaex/servicos/ExService";
+        var url = "http://200.20.0.58:8080/sigaex/servicos/ExService";
 
         var params = new SOAPClientParameters();
         params.add("numeroProcesso", numeroProcesso);
@@ -35,14 +34,38 @@ modController.controller('CadastroController', ['$scope', function ($scope) {
         return resposta;
     }
 
-    inserirProcesso = function (dataUltimaMovimentacao, movimentacoes) {
+    inserirProcesso = function (numeroProcesso, descricao, dataUltimaMovimentacao, movimentacoes) {
 
+        return DB.query('INSERT INTO processo (codProcesso, descricao, dataUltimaMovimentacao, movimentacoes) VALUES (?,?,?,?)',
+            [numeroProcesso, descricao, dataUltimaMovimentacao, movimentacoes])
+            .then(function (resultado) {
+                console.log("Inseriu registro com ID "+resultado.insertId+" na tabela");
+            },
+            function (razao) {
+                console.log('Falhou: ' + razao);
+            });
 
     }
 
-   atualizarProcesso = function ($dados) {
+    var atualizarProcesso = function (numeroProcesso, dataUltimaMovimentacao, movimentacoes) {
+        return DB.query('UPDATE processo SET dataUltimaMovimentacao = ?  and movimentacoes = ? WHERE codProcesso = ?',
+            [dataUltimaMovimentacao, movimentacoes, numeroProcesso])
+            .then(function (resultado) {
+                console.log("Atualizou o registro com ID "+ resultado.insertId +" na tabela");
+            },
+            function (razao) {
+                console.log('Falhou: ' + razao);
+            });
+    }
 
-        
+    var removerProcesso = function (numeroProcesso) {
+        return DB.query('DELETE processo WHERE codProcesso = ?', [numeroProcesso])
+            .then(function (resultado) {
+                console.log("Removeu o registro com ID "+resultado.insertId+" na tabela");
+            },
+            function (razao) {
+                console.log('Falhou: ' + razao);
+            });
     }
 
 }]);

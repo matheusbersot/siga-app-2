@@ -62,3 +62,22 @@ font-family: "Courier New", Courier, monospace;
     top:8px;
     left:30px;
 }
+
+.view-conteudo
+{
+    background-color:#F1F1F2;
+}
+.underline_text {
+    border-bottom: solid 2px #FF821A;
+    width:100%;
+    padding-bottom: 0px;
+    font-size: 14px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.item .text{
+    font-size: 14px;
+    color: #000000;
+    margin: 0 0 10px;
+}

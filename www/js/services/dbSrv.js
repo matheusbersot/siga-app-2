@@ -1,6 +1,6 @@
 /*Source: https://gist.github.com/jgoux/10738978*/
 
-angular.module('myApp.services', ['myApp.config'])
+angular.module('myApp.services')
 // DB wrapper
     .factory('DB', function ($q, DB_CONFIG) {
         var self = this;

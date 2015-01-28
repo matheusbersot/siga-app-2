@@ -1,27 +1,4 @@
-var modConfig = angular.module('myApp.config',[]);
-
-modConfig.config(function($stateProvider, $urlRouterProvider) {
-
-    $urlRouterProvider.otherwise('/home');
-
-    $stateProvider.state('home', {
-        url: '/home',
-        views: {
-            home: {
-                templateUrl: 'home.html'
-            }
-        }
-    });
-
-    $stateProvider.state('cadastro', {
-        url: '/cadastro',
-        views: {
-            cadastro: {
-                templateUrl: 'cadastro.html'
-            }
-        }
-    });
-});
+var modConfig = angular.module('myApp.config');
 
 modConfig.constant('DB_CONFIG', {
         name: 'DB',
