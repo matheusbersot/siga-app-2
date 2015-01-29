@@ -55,6 +55,11 @@ font-family: "Courier New", Courier, monospace;
     outline: 0;
 }
 
+.custom-input[readonly]:not(.cloned-text-input)
+{
+    background-color: #F1F1F2;
+}
+
 #logo-uff{
     width: 30px;
     height: 15px;

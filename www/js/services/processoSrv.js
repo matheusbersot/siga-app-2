@@ -51,7 +51,7 @@ angular.module('myApp.services')
         };
 
         self.buscarTodosProcessos = function () {
-            return DB.query('SELECT * from processo')
+            return DB.query('SELECT * FROM processo')
                 .then(function (resultado) {
                     dados = DB.fetchAll(resultado);
                     return dados;
@@ -59,6 +59,19 @@ angular.module('myApp.services')
                 function (razao) {
                     console.log('Falhou: ' + razao.message);
                 });
+        };
+
+        self.processoCadastrado = function (codProcesso, listaProcessos) {
+
+            var achou = false;
+            var i = 0;
+            while ((!achou) && (i < listaProcessos.length)) {
+                if (listaProcessos[i].numero == codProcesso) {
+                    achou = true;
+                };
+                ++i;
+            };
+            return achou;
         };
 
         self.editarProcesso = function (codProcesso, descricao) {
