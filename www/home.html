@@ -1,5 +1,5 @@
 <ion-view>
-    <ion-content padding="true" class="view-conteudo"  ng-controller="HomeController">
+    <ion-content padding="true" class="view-conteudo"  ng-controller="ProcessoController">
 
         <ion-header-bar class="bar-light-blue">
             <img src="img/uff.gif" id="logo-uff"/>
@@ -11,9 +11,9 @@
         <br/>
         <br/>
 
-        <div ng-controller="HomeController">
+        <div>
             <accordion close-others="umPorVez">
-                <accordion-group ng-repeat="processo in processos" style="padding: 0px;">
+                <accordion-group ng-repeat="processo in listaProcessos" style="padding: 0px;">
                     <accordion-heading>
                         <div class="list card" style="margin: 0px 0px">
                             <div class="item item-icon-left item-icon-right">
@@ -24,7 +24,7 @@
                              </span>
                                 <div class="icon">
                                 <button class="button button-icon ion-edit" style="font-size: 29px" ui-sref="editar({numProcesso: processo.numero, descricao: processo.descricao})"></button>
-                                <button class="button button-icon ion-trash-b" style="font-size: 29px" ng-click="removerProcesso(processo.descricao)" ui-sref="home"></button>
+                                <button class="button button-icon ion-trash-b" style="font-size: 29px" ng-click="remover(processo.numero)" ui-sref="home"></button>
                                 </div>
                             </div>
 
