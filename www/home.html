@@ -1,11 +1,11 @@
 <ion-view>
-    <ion-content padding="true" class="view-conteudo" ng-controller="CadastroController">
+    <ion-content padding="true" class="view-conteudo"  ng-controller="HomeController">
 
         <ion-header-bar class="bar-light-blue">
             <img src="img/uff.gif" id="logo-uff"/>
 
             <h1 class="title" style="text-align: left; font-weight: bold;">UFF Processos</h1>
-            <button class="button button-icon icon ion-plus" style="top:0px; bottom:0px" ui-sref="cadastro"></button>
+            <button class="button button-icon icon ion-plus" style="top:0px; bottom:0px" ui-sref="cadastrar"></button>
         </ion-header-bar>
 
         <br/>
@@ -23,7 +23,7 @@
                                 <p class="text">{{processo.numero}}</p>
                              </span>
                                 <div class="icon">
-                                <button class="button button-icon ion-edit" style="font-size: 29px" ui-sref="editar"></button>
+                                <button class="button button-icon ion-edit" style="font-size: 29px" ui-sref="editar({numProcesso: processo.numero, descricao: processo.descricao})"></button>
                                 <button class="button button-icon ion-trash-b" style="font-size: 29px" ng-click="removerProcesso(processo.descricao)" ui-sref="home"></button>
                                 </div>
                             </div>

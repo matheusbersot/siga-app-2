@@ -22,11 +22,17 @@ angular.module('myApp', ['ionic', 'ui.router', 'ui.bootstrap', 'myApp.controller
                 templateUrl: 'home.html',
                 cache: false
             })
-            .state('cadastro', {
-                url: '/cadastro',
-                templateUrl: 'cadastro.html',
+            .state('cadastrar', {
+                url: '/cadastrar',
+                templateUrl: 'cadastrar.html',
+                cache: false
+            })
+            .state('editar', {
+                url: '/editar/:numProcesso/:descricao',
+                templateUrl: 'editar.html',
                 cache: false
             });
+
     })
 
 

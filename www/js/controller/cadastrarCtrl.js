@@ -1,6 +1,6 @@
 var modController = angular.module('myApp.controllers');
 
-modController.controller('CadastroController', ['$scope', 'DB', function ($scope, DB) {
+modController.controller('CadastrarController', ['$scope', 'DB', function ($scope, DB) {
 
     $scope.numProcesso = "";
     $scope.descricao = "";
@@ -15,7 +15,6 @@ modController.controller('CadastroController', ['$scope', 'DB', function ($scope
             var dataUltimaMovimentacao = respostaJson.resposta[0].dataEvento;
 
             var resp = inserirProcesso($scope.numProcesso, $scope.descricao,dataUltimaMovimentacao, movimentacoes);
-            var teste = "teste";
         }
         else {
             //TODO: pensar no que fazer ( talvez mostrar modal dizendo que foi impossivel salvar, pois o numero do processo está errado").;
@@ -45,6 +44,17 @@ modController.controller('CadastroController', ['$scope', 'DB', function ($scope
                 console.log('Falhou: ' + razao);
             });
 
+    }
+
+    var editarProcesso = function (numeroProcesso, dataUltimaMovimentacao, movimentacoes) {
+        return DB.query('UPDATE processo SET dataUltimaMovimentacao = ?  and movimentacoes = ? WHERE codProcesso = ?',
+            [dataUltimaMovimentacao, movimentacoes, numeroProcesso])
+            .then(function (resultado) {
+                console.log("Atualizou o registro com ID "+ resultado.insertId +" na tabela");
+            },
+            function (razao) {
+                console.log('Falhou: ' + razao);
+            });
     }
 
     var atualizarProcesso = function (numeroProcesso, dataUltimaMovimentacao, movimentacoes) {
