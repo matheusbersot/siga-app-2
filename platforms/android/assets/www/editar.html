@@ -1,0 +1,30 @@
+<ion-view>
+    <ion-content padding="true" class="view-conteudo" ng-controller="EditarProcessoController">
+
+        <ion-header-bar class="bar-light-blue">
+            <button class="button button-icon icon ion-ios7-arrow-back" style="position: absolute;top:0px; bottom:0px" ui-sref="home">
+            </button>
+            <img src="img/uff.gif"  id="logo-uff"/>
+            <h1 class="title" style="text-align: left; font-weight: bold;">UFF Processos</h1>
+            <button class="button button-icon fa fa-floppy-o" style="top:0px; bottom:0px" ng-click="editar()" ui-sref="home"></button>
+        </ion-header-bar>
+
+        <br/>
+        <br/>
+
+        <div class="painel_cadastro">
+            <form name="formCadastroProcesso">
+                <span class="input-label"  style="width: 100%; padding-top: 20px;">Descrição</span>
+                <input class="custom-input" type="text" maxlength="17" ng-model="descricao">
+                <span class="input-label" style="width: 100%; padding-top: 20px;">Número do Processo</span>
+                <input class="custom-input" type="text" maxlength="17" ng-model="numProcesso" ng-readonly="somenteLeitura">
+            </form>
+            <br/>
+            <br/>
+            <br/>
+        </div>
+    </ion-content>
+</ion-view>
+
+
+
