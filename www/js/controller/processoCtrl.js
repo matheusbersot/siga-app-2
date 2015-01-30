@@ -1,15 +1,9 @@
 var modController = angular.module('myApp.controllers');
 
-modController.controller('ProcessoController', ['$scope', 'DB', 'processoSrv', '$stateParams', '$ionicModal', '$state',
-    function ($scope, DB, processoSrv, $stateParams, $ionicModal, $state) {
+modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv',
+    function ($scope, DB, processoSrv) {
 
-        $scope.numProcesso = $stateParams.numProcesso;
-        $scope.descricao = $stateParams.descricao;
-        $scope.mensagem = "Esse processo já se encontra cadastrado!";
-
-        $scope.readOnly = true;
         $scope.umPorVez = true;
-
         $scope.listaProcessos = [];
 
         this.init = function () {
@@ -19,34 +13,6 @@ modController.controller('ProcessoController', ['$scope', 'DB', 'processoSrv', '
                 }
             );
         }
-
-        $scope.salvar = function () {
-
-            var resposta = processoSrv.buscarProcessoSIGA($scope.numProcesso);
-            var respostaJson = JSON.parse(resposta);
-
-            if (!respostaJson.erro) {
-                var movimentacoes = resposta;
-                var dataUltimaMovimentacao = respostaJson.resposta[0].dataEvento;
-
-                if (!processoSrv.processoCadastrado($scope.numProcesso,$scope.listaProcessos)) {
-                    processoSrv.inserirProcesso($scope.numProcesso, $scope.descricao, dataUltimaMovimentacao, movimentacoes);
-                    $state.go("home");
-                }
-                else {
-                    $scope.mensagem = "Esse processo já se encontra cadastrado!"
-                    $scope.openModal();
-                }
-            }
-            else {
-                $scope.mensagem = "Número do processo é inválido!"
-                $scope.openModal();
-            }
-        };
-
-        $scope.editar = function () {
-            processoSrv.editarProcesso($scope.numProcesso, $scope.descricao);
-        };
 
         $scope.remover = function (codProcesso) {
 
@@ -64,6 +30,61 @@ modController.controller('ProcessoController', ['$scope', 'DB', 'processoSrv', '
 
         this.init();
 
+    }]);
+
+modController.controller('EditarProcessoController', ['$scope', 'DB', 'processoSrv', '$stateParams',
+    function ($scope, DB, processoSrv, $stateParams) {
+
+        $scope.numProcesso = $stateParams.numProcesso;
+        $scope.descricao = $stateParams.descricao;
+
+        $scope.somenteLeitura = true;
+
+        $scope.editar = function () {
+            processoSrv.editarProcesso($scope.numProcesso, $scope.descricao);
+        };
+
+    }]);
+
+
+
+modController.controller('CadastrarProcessoController', ['$scope', 'DB', 'processoSrv', '$ionicModal', '$state',
+    function ($scope, DB, processoSrv, $ionicModal, $state) {
+
+        $scope.numProcesso = "";
+        $scope.descricao = "";
+        $scope.mensagem = "";
+
+        $scope.salvar = function () {
+
+            var resposta = processoSrv.buscarProcessoSIGA($scope.numProcesso);
+            var respostaJson = JSON.parse(resposta);
+
+            if (!respostaJson.erro) {
+                var movimentacoes = resposta;
+                var dataUltimaMovimentacao = respostaJson.resposta[0].dataEvento;
+
+
+                processoSrv.processoEstaCadastrado($scope.numProcesso)
+                    .then(function(estaCadastrado){
+                        if(!estaCadastrado)
+                        {
+                            processoSrv.inserirProcesso($scope.numProcesso, $scope.descricao, dataUltimaMovimentacao, movimentacoes);
+                            $state.go("home");
+                        }
+                        else
+                        {
+                            $scope.mensagem = "Esse processo já se encontra cadastrado!"
+                            $scope.openModal();
+                        };
+                    }
+                );
+            }
+            else {
+                $scope.mensagem = "Número do processo é inválido!"
+                $scope.openModal();
+            }
+        };
 
         /* Modal operations */
         $ionicModal.fromTemplateUrl('modalMensagem.html', {

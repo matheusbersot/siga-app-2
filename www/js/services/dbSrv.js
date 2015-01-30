@@ -49,7 +49,11 @@ angular.module('myApp.services')
         };
 
         self.fetch = function (result) {
-            return result.rows.item(0);
+            if(result.rows > 0)
+            {
+                return result.rows.item(0);
+            }
+            return null;
         };
 
         return self;

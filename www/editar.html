@@ -1,5 +1,5 @@
 <ion-view>
-    <ion-content padding="true" class="view-conteudo"  ng-controller="ProcessoController">
+    <ion-content padding="true" class="view-conteudo" ng-controller="EditarProcessoController">
 
         <ion-header-bar class="bar-light-blue">
             <button class="button button-icon icon ion-ios7-arrow-back" style="position: absolute;top:0px; bottom:0px" ui-sref="home">
@@ -17,7 +17,7 @@
                 <span class="input-label"  style="width: 100%; padding-top: 20px;">Descrição</span>
                 <input class="custom-input" type="text" maxlength="17" ng-model="descricao">
                 <span class="input-label" style="width: 100%; padding-top: 20px;">Número do Processo</span>
-                <input class="custom-input" type="text" maxlength="17" ng-model="numProcesso" ng-readonly="readOnly">
+                <input class="custom-input" type="text" maxlength="17" ng-model="numProcesso" ng-readonly="somenteLeitura">
             </form>
             <br/>
             <br/>
