@@ -1,18 +1,27 @@
 var modController = angular.module('myApp.controllers');
 
-modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv',
-    function ($scope, DB, processoSrv) {
+modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv', '$interval', '$window',
+    function ($scope, DB, processoSrv, $interval, $window) {
 
         $scope.umPorVez = true;
         $scope.listaProcessos = [];
 
+        $scope.setEstiloAtualizado = function(foiAtualizado)
+        {
+            if(foiAtualizado)
+            {
+                return {'background-color': '#F4A025'}
+            }
+        }
+
         this.init = function () {
+
             processoSrv.buscarTodosProcessos()
                 .then(function (dadosProcessos) {
                     $scope.listaProcessos = processoSrv.montarObjProcessos(dadosProcessos);
                 }
             );
-        }
+        };
 
         $scope.remover = function (codProcesso) {
 
@@ -23,10 +32,17 @@ modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv
                     $scope.listaProcessos.splice(i, 1);
                     processoSrv.removerProcesso(codProcesso);
                     achou = true;
-                };
+                }
                 ++i;
-            };
+            }
         };
+
+        $scope.$watch('processoSrv.listaProcessos', function() {
+            if(processoSrv.listaProcessos.length >= $scope.listaProcessos.length) {
+                $scope.listaProcessos = processoSrv.listaProcessos;
+                processoSrv.listaProcessos = [];
+            }
+        });
 
         this.init();
 
@@ -74,14 +90,14 @@ modController.controller('CadastrarProcessoController', ['$scope', 'DB', 'proces
                         }
                         else
                         {
-                            $scope.mensagem = "Esse processo já se encontra cadastrado!"
+                            $scope.mensagem = "Esse processo já se encontra cadastrado!";
                             $scope.openModal();
-                        };
+                        }
                     }
                 );
             }
             else {
-                $scope.mensagem = "Número do processo é inválido!"
+                $scope.mensagem = "Número do processo é inválido!";
                 $scope.openModal();
             }
         };

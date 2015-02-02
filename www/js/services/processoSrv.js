@@ -1,5 +1,5 @@
 angular.module('myApp.services')
-    .factory('processoSrv', ['DB', function (DB) {
+    .factory('processoSrv', ['DB', '$interval', function (DB, $interval) {
         var self = this;
 
         self.montarObjProcessos = function (dadosProcessos) {
@@ -20,7 +20,9 @@ angular.module('myApp.services')
             var objProcesso = {};
             objProcesso["descricao"] = dadosProcesso.descricao;
             objProcesso["numero"] = dadosProcesso.codProcesso;
-            objProcesso["movimentacoes"] = self.montarObjMovimentacoes(dadosProcesso.movimentacoes);
+            objProcesso["dataUltimaMovimentacao"] = dadosProcesso.dataUltimaMovimentacao;
+            objProcesso["movimentacoes"] = self.montarObjMovimentacoes(dadosProcesso.movimentacoes)
+            objProcesso["atualizou"] = false;
 
             return objProcesso;
         };
@@ -30,7 +32,7 @@ angular.module('myApp.services')
             var dados = respostaJson.resposta;
 
             for (var i = 0; i < dados.length; ++i) {
-                dados[i]["primeira"] = (i == 0) ? true : false;
+                dados[i]["primeira"] = (i == 0);
             }
 
             return dados;
@@ -44,15 +46,13 @@ angular.module('myApp.services')
             var params = new SOAPClientParameters();
             params.add("numeroProcesso", numeroProcesso);
 
-            var resposta = SOAPClient.invoke(url, "consultaMovimentacaoProcesso2", params, false, null);
-            return resposta;
+            return SOAPClient.invoke(url, "consultaMovimentacaoProcesso2", params, false, null);
         };
 
         self.buscarTodosProcessos = function () {
             return DB.query('SELECT * FROM processo')
                 .then(function (resultado) {
-                    dados = DB.fetchAll(resultado);
-                    return dados;
+                    return DB.fetchAll(resultado);
                 },
                 function (razao) {
                     console.log('Falhou: ' + razao.message);
@@ -64,13 +64,8 @@ angular.module('myApp.services')
             return DB.query('SELECT * FROM processo WHERE codProcesso = ?',
                 [codProcesso])
                 .then(function (resultado) {
-                    dados = DB.fetch(resultado);
-                    if (dados != null && dados.length > 0) {
-                        return true;
-                    }
-                    else {
-                        return false;
-                    };
+                    var dados = DB.fetch(resultado);
+                    return (dados && dados.length > 0);
                 },
                 function (razao) {
                     console.log('Falhou: ' + razao.message);
@@ -86,7 +81,7 @@ angular.module('myApp.services')
                 function (razao) {
                     console.log('Falhou: ' + razao.message);
                 });
-        }
+        };
 
         self.removerProcesso = function (codProcesso) {
             return DB.query('DELETE from processo WHERE codProcesso = ?', [codProcesso])
@@ -111,7 +106,8 @@ angular.module('myApp.services')
 
         };
 
-        self.atualizarProcesso = function (numeroProcesso, dataUltimaMovimentacao, movimentacoes) {
+        self.atualizarProcesso = function (dataUltimaMovimentacao, movimentacoes, numeroProcesso) {
+
             return DB.query('UPDATE processo SET dataUltimaMovimentacao = ?  and movimentacoes = ? WHERE codProcesso = ?',
                 [dataUltimaMovimentacao, movimentacoes, numeroProcesso])
                 .then(function (resultado) {
@@ -122,6 +118,45 @@ angular.module('myApp.services')
                 });
         };
 
+
+
+        self.listaProcessos = [];
+
+        self.atualizarTodosProcessos = function () {
+
+            self.buscarTodosProcessos()
+                .then(function (dadosProcessos) {
+                    self.listaProcessos = self.montarObjProcessos(dadosProcessos);
+
+                    for (var i = 0; i < self.listaProcessos.length; ++i) {
+
+                        //busca processo no servidor
+                        var resposta = self.buscarProcessoSIGA(self.listaProcessos[i].numero);
+                        var respostaJson = JSON.parse(resposta);
+
+                        if (!respostaJson.erro) {
+                            var movimentacoes = resposta;
+                            var dataUltimaMovimentacao = respostaJson.resposta[0].dataEvento;
+
+                            //verifica se há movimentações novas
+                            if (dataUltimaMovimentacao != self.listaProcessos[i].dataUltimaMovimentacao) {
+                                var objProcesso = self.listaProcessos[i];
+
+                                // se houver, atualiza os dados do processo
+                                self.atualizarProcesso(self.listaProcessos[i].numero, dataUltimaMovimentacao, movimentacoes)
+                                    .then(function () {
+                                        objProcesso.atualizou = true;
+                                    }
+                                )
+                            }
+                        }
+                    }
+                }
+            );
+        };
+
+        var promiseAtualizarTodosProcessos;
+        promiseAtualizarTodosProcessos= $interval(self.atualizarTodosProcessos,60000);
 
         return self;
     }]);
