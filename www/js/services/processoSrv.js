@@ -108,7 +108,7 @@ angular.module('myApp.services')
 
         self.atualizarProcesso = function (dataUltimaMovimentacao, movimentacoes, numeroProcesso) {
 
-            return DB.query('UPDATE processo SET dataUltimaMovimentacao = ?  and movimentacoes = ? WHERE codProcesso = ?',
+            return DB.query('UPDATE processo SET dataUltimaMovimentacao = ?, movimentacoes = ? WHERE codProcesso = ?',
                 [dataUltimaMovimentacao, movimentacoes, numeroProcesso])
                 .then(function (resultado) {
                     console.log("Atualizou " + resultado.rowsAffected + " registro(s) na tabela.");
