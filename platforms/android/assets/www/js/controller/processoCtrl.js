@@ -1,18 +1,20 @@
 var modController = angular.module('myApp.controllers');
 
-modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv',
-    function ($scope, DB, processoSrv) {
+modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv', '$interval', '$cordovaLocalNotification',
+    function ($scope, DB, processoSrv, $interval, $cordovaLocalNotification) {
 
         $scope.umPorVez = true;
         $scope.listaProcessos = [];
+        $scope.estiloAtualizado = {'background-color': '#FFFFFF'};
 
         this.init = function () {
+
             processoSrv.buscarTodosProcessos()
                 .then(function (dadosProcessos) {
                     $scope.listaProcessos = processoSrv.montarObjProcessos(dadosProcessos);
                 }
             );
-        }
+        };
 
         $scope.remover = function (codProcesso) {
 
@@ -23,9 +25,53 @@ modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv
                     $scope.listaProcessos.splice(i, 1);
                     processoSrv.removerProcesso(codProcesso);
                     achou = true;
-                };
+                }
                 ++i;
-            };
+            }
+        };
+
+        var notificarUsuarioAtualizacaoProcessos = function()
+        {
+            $cordovaLocalNotification.add({
+                id: 'some_notification_id',
+                message:    'TESTE',  // The message that is displayed
+                title:      'TITULO TESTE',  // The title of the message
+                repeat:     'daily',  // Either 'secondly', 'minutely', 'hourly', 'daily', 'weekly', 'monthly' or 'yearly'
+                badge:      2  // Displays number badge to notification
+            }).then(function () {
+                console.log('callback for adding background notification');
+            });
+        }
+
+        $scope.$watch(function () {
+            return processoSrv.atualizou;
+        }, function () {
+            if (processoSrv.atualizou) {
+                $scope.listaProcessos = processoSrv.listaProcessos;
+                processoSrv.listaProcessos = [];
+
+                //criar notificações
+                notificarUsuarioAtualizacaoProcessos();
+            }
+        });
+
+        $scope.reiniciarEstadoProcessos = function()
+        {
+            //reiniciar estado dos processos
+            for(var i = 0; i< $scope.listaProcessos.length; ++i){
+                $scope.listaProcessos[i].atualizou = false;
+            }
+        };
+
+        $scope.setCorItem = function (foiAtualizado) {
+
+            if (foiAtualizado) {
+                return {'background-color': 'rgb(255, 235, 205)'}
+            }
+            else
+            {
+                return {'background-color': '#FFFFFF'}
+            }
         };
 
         this.init();
@@ -47,7 +93,6 @@ modController.controller('EditarProcessoController', ['$scope', 'DB', 'processoS
     }]);
 
 
-
 modController.controller('CadastrarProcessoController', ['$scope', 'DB', 'processoSrv', '$ionicModal', '$state',
     function ($scope, DB, processoSrv, $ionicModal, $state) {
 
@@ -66,22 +111,20 @@ modController.controller('CadastrarProcessoController', ['$scope', 'DB', 'proces
 
 
                 processoSrv.processoEstaCadastrado($scope.numProcesso)
-                    .then(function(estaCadastrado){
-                        if(!estaCadastrado)
-                        {
+                    .then(function (estaCadastrado) {
+                        if (!estaCadastrado) {
                             processoSrv.inserirProcesso($scope.numProcesso, $scope.descricao, dataUltimaMovimentacao, movimentacoes);
                             $state.go("home");
                         }
-                        else
-                        {
-                            $scope.mensagem = "Esse processo já se encontra cadastrado!"
+                        else {
+                            $scope.mensagem = "Esse processo já se encontra cadastrado!";
                             $scope.openModal();
-                        };
+                        }
                     }
                 );
             }
             else {
-                $scope.mensagem = "Número do processo é inválido!"
+                $scope.mensagem = "Número do processo é inválido!";
                 $scope.openModal();
             }
         };

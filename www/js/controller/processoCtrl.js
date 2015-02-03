@@ -1,7 +1,7 @@
 var modController = angular.module('myApp.controllers');
 
-modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv', '$interval', '$window',
-    function ($scope, DB, processoSrv, $interval, $window) {
+modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv', '$interval', '$cordovaLocalNotification',
+    function ($scope, DB, processoSrv, $interval, $cordovaLocalNotification) {
 
         $scope.umPorVez = true;
         $scope.listaProcessos = [];
@@ -30,12 +30,28 @@ modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv
             }
         };
 
+        var notificarUsuarioAtualizacaoProcessos = function()
+        {
+            $cordovaLocalNotification.add({
+                id: 'some_notification_id',
+                message:    'TESTE',  // The message that is displayed
+                title:      'TITULO TESTE',  // The title of the message
+                repeat:     'daily',  // Either 'secondly', 'minutely', 'hourly', 'daily', 'weekly', 'monthly' or 'yearly'
+                badge:      2  // Displays number badge to notification
+            }).then(function () {
+                console.log('callback for adding background notification');
+            });
+        }
+
         $scope.$watch(function () {
             return processoSrv.atualizou;
         }, function () {
             if (processoSrv.atualizou) {
                 $scope.listaProcessos = processoSrv.listaProcessos;
                 processoSrv.listaProcessos = [];
+
+                //criar notificações
+                notificarUsuarioAtualizacaoProcessos();
             }
         });
 

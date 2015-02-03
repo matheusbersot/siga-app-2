@@ -118,8 +118,6 @@ angular.module('myApp.services')
                 });
         };
 
-
-
         self.listaProcessos = [];
         self.atualizou = false;
 
