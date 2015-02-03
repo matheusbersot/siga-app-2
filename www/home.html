@@ -15,8 +15,8 @@
             <accordion close-others="umPorVez">
                 <accordion-group ng-repeat="processo in listaProcessos" style="padding: 0px;">
                     <accordion-heading>
-                        <div class="list card" style="margin: 0px 0px" ng-style="setEstiloAtualizado(processo.atualizou)">
-                            <div class="item item-icon-left item-icon-right">
+                        <div class="list card" style="margin: 0px 0px" >
+                            <div class="item item-icon-left item-icon-right" ng-style="estiloAtualizado=setCorItem(processo.atualizou)" ng-click="reiniciarEstadoProcessos();estiloAtualizado=setCorItem(processo.atualizou)">
                                 <i class="icon ion-ios7-folder"></i>
                             <span>
                                 <p class="text">{{processo.descricao}}<p>

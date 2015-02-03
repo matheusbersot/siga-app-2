@@ -5,14 +5,7 @@ modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv
 
         $scope.umPorVez = true;
         $scope.listaProcessos = [];
-
-        $scope.setEstiloAtualizado = function(foiAtualizado)
-        {
-            if(foiAtualizado)
-            {
-                return {'background-color': '#F4A025'}
-            }
-        }
+        $scope.estiloAtualizado = {'background-color': '#FFFFFF'};
 
         this.init = function () {
 
@@ -37,12 +30,33 @@ modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv
             }
         };
 
-        $scope.$watch('processoSrv.listaProcessos', function() {
-            if(processoSrv.listaProcessos.length >= $scope.listaProcessos.length) {
+        $scope.$watch(function () {
+            return processoSrv.atualizou;
+        }, function () {
+            if (processoSrv.atualizou) {
                 $scope.listaProcessos = processoSrv.listaProcessos;
                 processoSrv.listaProcessos = [];
             }
         });
+
+        $scope.reiniciarEstadoProcessos = function()
+        {
+            //reiniciar estado dos processos
+            for(var i = 0; i< $scope.listaProcessos.length; ++i){
+                $scope.listaProcessos[i].atualizou = false;
+            }
+        };
+
+        $scope.setCorItem = function (foiAtualizado) {
+
+            if (foiAtualizado) {
+                return {'background-color': 'rgb(255, 235, 205)'}
+            }
+            else
+            {
+                return {'background-color': '#FFFFFF'}
+            }
+        };
 
         this.init();
 
@@ -63,7 +77,6 @@ modController.controller('EditarProcessoController', ['$scope', 'DB', 'processoS
     }]);
 
 
-
 modController.controller('CadastrarProcessoController', ['$scope', 'DB', 'processoSrv', '$ionicModal', '$state',
     function ($scope, DB, processoSrv, $ionicModal, $state) {
 
@@ -82,14 +95,12 @@ modController.controller('CadastrarProcessoController', ['$scope', 'DB', 'proces
 
 
                 processoSrv.processoEstaCadastrado($scope.numProcesso)
-                    .then(function(estaCadastrado){
-                        if(!estaCadastrado)
-                        {
+                    .then(function (estaCadastrado) {
+                        if (!estaCadastrado) {
                             processoSrv.inserirProcesso($scope.numProcesso, $scope.descricao, dataUltimaMovimentacao, movimentacoes);
                             $state.go("home");
                         }
-                        else
-                        {
+                        else {
                             $scope.mensagem = "Esse processo já se encontra cadastrado!";
                             $scope.openModal();
                         }

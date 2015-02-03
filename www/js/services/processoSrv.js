@@ -121,8 +121,11 @@ angular.module('myApp.services')
 
 
         self.listaProcessos = [];
+        self.atualizou = false;
 
         self.atualizarTodosProcessos = function () {
+
+            self.atualizou = false;
 
             self.buscarTodosProcessos()
                 .then(function (dadosProcessos) {
@@ -143,9 +146,12 @@ angular.module('myApp.services')
                                 var objProcesso = self.listaProcessos[i];
 
                                 // se houver, atualiza os dados do processo
-                                self.atualizarProcesso(self.listaProcessos[i].numero, dataUltimaMovimentacao, movimentacoes)
+                                self.atualizarProcesso(dataUltimaMovimentacao, movimentacoes, self.listaProcessos[i].numero)
                                     .then(function () {
+                                        objProcesso.dataUltimaMovimentacao = dataUltimaMovimentacao;
+                                        objProcesso.movimentacoes = self.montarObjMovimentacoes(movimentacoes);
                                         objProcesso.atualizou = true;
+                                        self.atualizou = true;
                                     }
                                 )
                             }
