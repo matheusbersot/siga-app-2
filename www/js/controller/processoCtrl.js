@@ -1,7 +1,7 @@
 var modController = angular.module('myApp.controllers');
 
-modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv', '$interval', '$cordovaLocalNotification',
-    function ($scope, DB, processoSrv, $interval, $cordovaLocalNotification) {
+modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv',
+    function ($scope, DB, processoSrv) {
 
         $scope.umPorVez = true;
         $scope.listaProcessos = [];
@@ -30,7 +30,7 @@ modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv
             }
         };
 
-        var notificarUsuarioAtualizacaoProcessos = function()
+        /*var notificarUsuarioAtualizacaoProcessos = function()
         {
             $cordovaLocalNotification.add({
                 id: 'some_notification_id',
@@ -41,7 +41,7 @@ modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv
             }).then(function () {
                 console.log('callback for adding background notification');
             });
-        }
+        }*/
 
         $scope.$watch(function () {
             return processoSrv.atualizou;
@@ -51,7 +51,7 @@ modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv
                 processoSrv.listaProcessos = [];
 
                 //criar notificações
-                notificarUsuarioAtualizacaoProcessos();
+                //notificarUsuarioAtualizacaoProcessos();
             }
         });
 
@@ -117,15 +117,13 @@ modController.controller('CadastrarProcessoController', ['$scope', 'DB', 'proces
                             $state.go("home");
                         }
                         else {
-                            $scope.mensagem = "Esse processo já se encontra cadastrado!";
-                            $scope.openModal();
+                            alert("Esse processo já se encontra cadastrado!");
                         }
                     }
                 );
             }
             else {
-                $scope.mensagem = "Número do processo é inválido!";
-                $scope.openModal();
+                alert("Número do processo é inválido!");
             }
         };
 

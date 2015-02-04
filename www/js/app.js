@@ -5,16 +5,15 @@ angular.module('myApp.config', []);
 angular.module('myApp.services', []);
 angular.module('myApp.controllers', []);
 
-
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 
-angular.module('myApp', ['ionic', 'ui.router', 'ui.bootstrap', 'ngCordova', 'myApp.controllers', 'myApp.services', 'myApp.config'])
+angular.module('myApp', ['ionic', 'ui.router', 'ui.bootstrap', 'myApp.controllers', 'myApp.services', 'myApp.config'])
 
     .config(function ($stateProvider, $urlRouterProvider) {
 
-        $urlRouterProvider.otherwise('/home');
+        //$urlRouterProvider.otherwise('/home');
 
         $stateProvider
             .state('home', {
@@ -36,7 +35,7 @@ angular.module('myApp', ['ionic', 'ui.router', 'ui.bootstrap', 'ngCordova', 'myA
     })
 
 
-    .run(function ($ionicPlatform, DB) {
+    .run(function ($ionicPlatform, DB, $state) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -48,7 +47,11 @@ angular.module('myApp', ['ionic', 'ui.router', 'ui.bootstrap', 'ngCordova', 'myA
             }
 
             //Inicializando o banco de dados
-            DB.init();
+            DB.init().then(function(valor)
+            {
+                navigator.splashscreen.hide();
+                $state.go("home");
+            });
         })
     });
 

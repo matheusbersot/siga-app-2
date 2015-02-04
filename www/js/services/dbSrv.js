@@ -7,8 +7,21 @@ angular.module('myApp.services')
         self.db = null;
 
         self.init = function () {
-            // Use self.db = window.sqlitePlugin.openDatabase({name: DB_CONFIG.name}); in production
-            self.db = window.openDatabase(DB_CONFIG.name, '1.0', 'database', -1);
+
+            var deferred = $q.defer();
+
+            if (window.location.protocol == "file:") {
+                self.db = window.sqlitePlugin.openDatabase({name: DB_CONFIG.name});
+            } else {
+                self.db = window.openDatabase(DB_CONFIG.name, '1.0', 'database', -1);
+            }
+
+            if(self.db){
+                deferred.resolve("Conexão com o banco de dados foi estabelecida.");
+            }
+            else{
+                deferred.resolve("Conexão com o banco de dados não foi estabelecida.");
+            }
 
             angular.forEach(DB_CONFIG.tables, function (table) {
                 var columns = [];
@@ -21,6 +34,8 @@ angular.module('myApp.services')
                 self.query(query);
                 console.log('Table ' + table.name + ' initialized');
             });
+
+            return deferred.promise;
         };
 
         self.query = function (query, bindings) {
