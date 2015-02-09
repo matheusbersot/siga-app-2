@@ -1,7 +1,7 @@
 <ion-view>
     <ion-content padding="true" class="view-conteudo" ng-controller="CadastrarProcessoController">
 
-        <ion-header-bar class="bar-light-blue">
+        <ion-header-bar class="bar-light-blue" style="height: 60px;">
             <button class="button button-icon icon ion-ios7-arrow-back" style="position: absolute;top:0px; bottom:0px" ui-sref="home">
             </button>
             <img src="img/uff.gif"  id="logo-uff"/>
@@ -14,9 +14,9 @@
 
         <div class="painel_cadastro">
             <form name="formCadastroProcesso">
-                <span class="input-label"  style="width: 100%; padding-top: 20px;">Descrição</span>
-                <input class="custom-input" type="text" maxlength="17" ng-model="descricao">
-                <span class="input-label" style="width: 100%; padding-top: 20px;">Número do Processo</span>
+                <span class="input-label"  style="width: 100%; padding-top: 20px; font-size: 22px;  max-width: 300px;">Descrição</span>
+                <input class="custom-input" type="text" maxlength="50" ng-model="descricao">
+                <span class="input-label" style="width: 100%; padding-top: 20px;font-size: 22px; max-width: 300px;">Número do Processo</span>
                 <input class="custom-input" type="text" maxlength="17" ng-model="numProcesso" placeholder="Ex: 23069000000201501">
             </form>
             <br/>

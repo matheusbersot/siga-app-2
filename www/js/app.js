@@ -9,7 +9,7 @@ angular.module('myApp.controllers', []);
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 
-angular.module('myApp', ['ionic', 'ui.router', 'ui.bootstrap', 'myApp.controllers', 'myApp.services', 'myApp.config'])
+angular.module('myApp', ['ionic', /*'ng-cordova',*/ 'ui.router', 'ui.bootstrap', 'myApp.controllers', 'myApp.services', 'myApp.config'])
 
     .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -49,7 +49,7 @@ angular.module('myApp', ['ionic', 'ui.router', 'ui.bootstrap', 'myApp.controller
             //Inicializando o banco de dados
             DB.init().then(function(valor)
             {
-                navigator.splashscreen.hide();
+                //navigator.splashscreen.hide();
                 $state.go("home");
             });
         })
