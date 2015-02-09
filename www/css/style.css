@@ -75,15 +75,16 @@ font-family: "Courier New", Courier, monospace;
 }
 .underline_text {
     border-bottom: solid 2px #FF821A;
-    width:100%;
     padding-bottom: 0px;
-    font-size: 14px;
+    font-size: 20px;
     color: #000000;
     font-weight: bold;
+    white-space: normal
 }
 
 .item .text{
-    font-size: 14px;
+    font-size: 20px;
     color: #000000;
     margin: 0 0 10px;
+    white-space: normal
 }
