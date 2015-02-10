@@ -1,7 +1,7 @@
 var modController = angular.module('myApp.controllers');
 
-modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv',
-    function ($scope, DB, processoSrv) {
+modController.controller('HomeProcessoController', ['$scope', 'processoSrv',
+    function ($scope, processoSrv) {
 
         $scope.umPorVez = true;
         $scope.listaProcessos = [];
@@ -78,8 +78,8 @@ modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv
 
     }]);
 
-modController.controller('EditarProcessoController', ['$scope', 'DB', 'processoSrv', '$stateParams',
-    function ($scope, DB, processoSrv, $stateParams) {
+modController.controller('EditarProcessoController', ['$scope', 'processoSrv', '$stateParams',
+    function ($scope, processoSrv, $stateParams) {
 
         $scope.numProcesso = $stateParams.numProcesso;
         $scope.descricao = $stateParams.descricao;
@@ -93,8 +93,8 @@ modController.controller('EditarProcessoController', ['$scope', 'DB', 'processoS
     }]);
 
 
-modController.controller('CadastrarProcessoController', ['$scope', 'DB', 'processoSrv', '$ionicModal', '$state',
-    function ($scope, DB, processoSrv, $ionicModal, $state) {
+modController.controller('CadastrarProcessoController', ['$scope', 'processoSrv', '$state',
+    function ($scope, processoSrv, $state) {
 
         $scope.numProcesso = "";
         $scope.descricao = "";
@@ -126,32 +126,20 @@ modController.controller('CadastrarProcessoController', ['$scope', 'DB', 'proces
                 alert("Número do processo é inválido!");
             }
         };
-
-        /* Modal operations */
-        $ionicModal.fromTemplateUrl('modalMensagem.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function (modal) {
-            $scope.modal = modal;
-        });
-
-        $scope.openModal = function () {
-            $scope.modal.show();
-        };
-        $scope.closeModal = function () {
-            $scope.modal.hide();
-        };
-        //Cleanup the modal when we're done with it!
-        $scope.$on('$destroy', function () {
-            $scope.modal.remove();
-        });
-        // Execute action on hide modal
-        $scope.$on('modal.hidden', function () {
-            // Execute action
-        });
-        // Execute action on remove modal
-        $scope.$on('modal.removed', function () {
-            // Execute action
-        });
-
     }]);
+
+modController.filter('formataNumProcesso', function() {
+    return function(entrada) {
+        entrada = entrada || '';
+        var saida = "";
+        if(entrada.length == 17)
+        {
+            saida = entrada.slice(0,5) + '.' + entrada.slice(5,11) + '/' + entrada.slice(11,15) + '-' +  entrada.slice(15,17);
+        }
+        else
+        {
+            saida = entrada;
+        }
+        return saida;
+    };
+})

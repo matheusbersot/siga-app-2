@@ -155,3 +155,19 @@ modController.controller('CadastrarProcessoController', ['$scope', 'DB', 'proces
         });
 
     }]);
+
+modController.filter('formataNumProcesso', function() {
+    return function(entrada) {
+        entrada = entrada || '';
+        var saida = "";
+        if(entrada.length == 17)
+        {
+            saida = entrada.slice(0,5) + '.' + entrada.slice(5,11) + '/' + entrada.slice(11,15) + '-' +  entrada.slice(15,17);
+        }
+        else
+        {
+            saida = entrada;
+        }
+        return saida;
+    };
+})

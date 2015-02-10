@@ -48,7 +48,7 @@ font-family: "Courier New", Courier, monospace;
     background-image: none;
     border-bottom: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .custom-input:focus {
@@ -84,14 +84,14 @@ font-family: "Courier New", Courier, monospace;
 .underline_text {
     border-bottom: solid 2px #FF821A;
     padding-bottom: 0px;
-    font-size: 20px;
+    font-size: 18px;
     color: #000000;
     font-weight: bold;
     white-space: normal
 }
 
 .item .text{
-    font-size: 20px;
+    font-size: 18px;
     color: #000000;
     margin: 0 0 10px;
     white-space: normal
