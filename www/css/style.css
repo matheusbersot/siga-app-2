@@ -1,7 +1,7 @@
 /* Empty. Add your own CSS if you like */
 
 .bar.bar-light-blue{
-   background-color: #5eace4;
+   background-color: #11aced;
    color: #fff;
 }
 
@@ -12,7 +12,7 @@ font-family: "Courier New", Courier, monospace;
 
 .bar-light-blue .button {
   border-color: #0c63ee;
-  background-color: #5eace4;
+  background-color: #11aced;
   color: #fff; 
 }
 .bar-light-blue .button:hover {
@@ -30,7 +30,7 @@ font-family: "Courier New", Courier, monospace;
 
 .bar-light-blue .button.button-icon {
     border-color: transparent;
-    background-color: #5eace4; 
+    background-color: #11aced;
 }
 
 .bar-light-blue .button.active, .bar-light-blue .button.activated {
@@ -61,12 +61,20 @@ font-family: "Courier New", Courier, monospace;
     background-color: #F1F1F2;
 }
 
-#logo-uff{
-    width: 30px;
-    height: 15px;
+#logotipo1{
+    width: 40px;
+    height: 30px;
     position:relative;
-    top:8px;
-    left:30px;
+    left: 14px;
+    top: 7px;
+}
+
+#logotipo2{
+    width: 40px;
+    height: 30px;
+    position:relative;
+    left: 50px;
+    top: 7px;
 }
 
 .view-conteudo
