@@ -1,7 +1,7 @@
 var modController = angular.module('myApp.controllers');
 
-modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv',
-    function ($scope, DB, processoSrv) {
+modController.controller('HomeProcessoController', ['$scope', 'processoSrv',
+    function ($scope, processoSrv) {
 
         $scope.umPorVez = true;
         $scope.listaProcessos = [];
@@ -78,8 +78,8 @@ modController.controller('HomeProcessoController', ['$scope', 'DB', 'processoSrv
 
     }]);
 
-modController.controller('EditarProcessoController', ['$scope', 'DB', 'processoSrv', '$stateParams',
-    function ($scope, DB, processoSrv, $stateParams) {
+modController.controller('EditarProcessoController', ['$scope', 'processoSrv', '$stateParams',
+    function ($scope, processoSrv, $stateParams) {
 
         $scope.numProcesso = $stateParams.numProcesso;
         $scope.descricao = $stateParams.descricao;
@@ -93,12 +93,37 @@ modController.controller('EditarProcessoController', ['$scope', 'DB', 'processoS
     }]);
 
 
-modController.controller('CadastrarProcessoController', ['$scope', 'DB', 'processoSrv', '$ionicModal', '$state',
-    function ($scope, DB, processoSrv, $ionicModal, $state) {
+modController.controller('CadastrarProcessoController', ['$scope', 'processoSrv', '$state', '$ionicModal',
+    function ($scope, processoSrv, $state, $ionicModal) {
 
         $scope.numProcesso = "";
         $scope.descricao = "";
         $scope.mensagem = "";
+
+        $ionicModal.fromTemplateUrl('modalAlerta.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal;
+        });
+        $scope.openModal = function() {
+            $scope.modal.show();
+        };
+        $scope.closeModal = function() {
+            $scope.modal.hide();
+        };
+        //Cleanup the modal when we're done with it!
+        $scope.$on('$destroy', function() {
+            $scope.modal.remove();
+        });
+        // Execute action on hide modal
+        $scope.$on('modal.hidden', function() {
+            // Execute action
+        });
+        // Execute action on remove modal
+        $scope.$on('modal.removed', function() {
+            // Execute action
+        });
 
         $scope.salvar = function () {
 
@@ -117,43 +142,17 @@ modController.controller('CadastrarProcessoController', ['$scope', 'DB', 'proces
                             $state.go("home");
                         }
                         else {
-                            alert("Esse processo já se encontra cadastrado!");
+                            $scope.mensagem = "Esse processo já se encontra cadastrado!";
+                            $scope.openModal();
                         }
                     }
                 );
             }
             else {
-                alert("Número do processo é inválido!");
+                $scope.mensagem = "Número do processo é inválido!";
+                $scope.openModal();
             }
         };
-
-        /* Modal operations */
-        $ionicModal.fromTemplateUrl('modalMensagem.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function (modal) {
-            $scope.modal = modal;
-        });
-
-        $scope.openModal = function () {
-            $scope.modal.show();
-        };
-        $scope.closeModal = function () {
-            $scope.modal.hide();
-        };
-        //Cleanup the modal when we're done with it!
-        $scope.$on('$destroy', function () {
-            $scope.modal.remove();
-        });
-        // Execute action on hide modal
-        $scope.$on('modal.hidden', function () {
-            // Execute action
-        });
-        // Execute action on remove modal
-        $scope.$on('modal.removed', function () {
-            // Execute action
-        });
-
     }]);
 
 modController.filter('formataNumProcesso', function() {
