@@ -30,7 +30,7 @@ modController.controller('HomeProcessoController', ['$scope', 'processoSrv',  '$
             }
         };
 
-        this.notificarUsuarioAtualizacaoProcessos = function()
+        var notificarUsuarioAtualizacaoProcessos = function()
         {
             for(var i = 0; i < $scope.listaProcessos.length; ++i)
             {
@@ -55,7 +55,7 @@ modController.controller('HomeProcessoController', ['$scope', 'processoSrv',  '$
                 processoSrv.listaProcessos = [];
 
                 //criar notificações
-                this.notificarUsuarioAtualizacaoProcessos();
+                notificarUsuarioAtualizacaoProcessos();
             }
         });
 
