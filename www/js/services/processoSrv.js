@@ -121,46 +121,41 @@ angular.module('myApp.services')
         self.listaProcessos = [];
         self.atualizou = false;
 
-        self.atualizarTodosProcessos = function () {
+        self.atualizarTodosProcessos = function (listaDeProcessos) {
 
             self.atualizou = false;
+            self.listaProcessos = listaDeProcessos;
 
-            self.buscarTodosProcessos()
-                .then(function (dadosProcessos) {
-                    self.listaProcessos = self.montarObjProcessos(dadosProcessos);
+            for (var i = 0; i < self.listaProcessos.length; ++i) {
 
-                    for (var i = 0; i < self.listaProcessos.length; ++i) {
+                //busca processo no servidor
+                var resposta = self.buscarProcessoSIGA(self.listaProcessos[i].numero);
+                var respostaJson = JSON.parse(resposta);
 
-                        //busca processo no servidor
-                        var resposta = self.buscarProcessoSIGA(self.listaProcessos[i].numero);
-                        var respostaJson = JSON.parse(resposta);
+                if (!respostaJson.erro) {
 
-                        if (!respostaJson.erro) {
-                            var movimentacoes = resposta;
-                            var dataUltimaMovimentacao = respostaJson.resposta[0].dataEvento;
+                    var movimentacoes = resposta;
+                    var dataUltimaMovimentacao = respostaJson.resposta[0].dataEvento;
+                    var objMovimentacoes = self.montarObjMovimentacoes(movimentacoes);
 
-                            //verifica se há movimentações novas
-                            if (dataUltimaMovimentacao != self.listaProcessos[i].dataUltimaMovimentacao) {
-                                var objProcesso = self.listaProcessos[i];
+                    //verifica se há movimentações novas
+                    if (objMovimentacoes.length != self.listaProcessos[i].movimentacoes.length) {
 
-                                // se houver, atualiza os dados do processo
-                                self.atualizarProcesso(dataUltimaMovimentacao, movimentacoes, self.listaProcessos[i].numero)
-                                    .then(function () {
-                                        objProcesso.dataUltimaMovimentacao = dataUltimaMovimentacao;
-                                        objProcesso.movimentacoes = self.montarObjMovimentacoes(movimentacoes);
-                                        objProcesso.atualizou = true;
-                                        self.atualizou = true;
-                                    }
-                                )
+                        var objProcesso = self.listaProcessos[i];
+
+                        // se houver, atualiza os dados do processo
+                        self.atualizarProcesso(dataUltimaMovimentacao, movimentacoes, self.listaProcessos[i].numero)
+                            .then(function () {
+                                objProcesso.dataUltimaMovimentacao = dataUltimaMovimentacao;
+                                objProcesso.movimentacoes = objMovimentacoes;
+                                objProcesso.atualizou = true;
+                                self.atualizou = true;
                             }
-                        }
+                        )
                     }
                 }
-            );
+            }
         };
-
-        var promiseAtualizarTodosProcessos;
-        promiseAtualizarTodosProcessos= $interval(self.atualizarTodosProcessos,60000);
 
         return self;
     }]);

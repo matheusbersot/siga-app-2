@@ -1,7 +1,7 @@
 var modController = angular.module('myApp.controllers');
 
-modController.controller('HomeProcessoController', ['$scope', 'processoSrv',
-    function ($scope, processoSrv) {
+modController.controller('HomeProcessoController', ['$scope', 'processoSrv',  '$interval', '$cordovaLocalNotification',
+    function ($scope, processoSrv, $interval,$cordovaLocalNotification) {
 
         $scope.umPorVez = true;
         $scope.listaProcessos = [];
@@ -30,18 +30,22 @@ modController.controller('HomeProcessoController', ['$scope', 'processoSrv',
             }
         };
 
-        /*var notificarUsuarioAtualizacaoProcessos = function()
+        this.notificarUsuarioAtualizacaoProcessos = function()
         {
-            $cordovaLocalNotification.add({
-                id: 'some_notification_id',
-                message:    'TESTE',  // The message that is displayed
-                title:      'TITULO TESTE',  // The title of the message
-                repeat:     'daily',  // Either 'secondly', 'minutely', 'hourly', 'daily', 'weekly', 'monthly' or 'yearly'
-                badge:      2  // Displays number badge to notification
-            }).then(function () {
-                console.log('callback for adding background notification');
-            });
-        }*/
+            for(var i = 0; i < $scope.listaProcessos.length; ++i)
+            {
+                if($scope.listaProcessos[i].atualizou)
+                {
+                    $cordovaLocalNotification.add({
+                        id: i,
+                        message:    "Descrição: " + $scope.listaProcessos[i].descricao,
+                        title:      'Atualização de Processo',
+                        repeat:     'daily',
+                        autoCancel: true
+                    });
+                }
+            }
+        }
 
         $scope.$watch(function () {
             return processoSrv.atualizou;
@@ -51,7 +55,7 @@ modController.controller('HomeProcessoController', ['$scope', 'processoSrv',
                 processoSrv.listaProcessos = [];
 
                 //criar notificações
-                //notificarUsuarioAtualizacaoProcessos();
+                this.notificarUsuarioAtualizacaoProcessos();
             }
         });
 
@@ -75,6 +79,13 @@ modController.controller('HomeProcessoController', ['$scope', 'processoSrv',
         };
 
         this.init();
+
+        var promiseAtualizarTodosProcessos;
+        promiseAtualizarTodosProcessos= $interval(function() { processoSrv.atualizarTodosProcessos($scope.listaProcessos); } ,60000); //60s
+
+        $scope.$on('$destroy', function() {
+            $interval.cancel(promiseAtualizarTodosProcessos);
+        });
 
     }]);
 
