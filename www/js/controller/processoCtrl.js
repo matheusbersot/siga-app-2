@@ -40,7 +40,6 @@ modController.controller('HomeProcessoController', ['$scope', 'processoSrv',  '$
                         id: i,
                         message:    "Descrição: " + $scope.listaProcessos[i].descricao,
                         title:      'Atualização de Processo',
-                        repeat:     'daily',
                         autoCancel: true
                     });
                 }
