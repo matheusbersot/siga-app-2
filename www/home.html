@@ -12,7 +12,7 @@
         <br/>
         <br/>
 
-        <div>
+        <div ng-show="listaProcessos.length > 0">
             <accordion close-others="umPorVez">
                 <accordion-group ng-repeat="processo in listaProcessos" style="padding: 0px;">
                     <accordion-heading>
@@ -20,8 +20,8 @@
                             <div class="item item-icon-left item-icon-right" style="padding-right: 90px;" ng-style="estiloAtualizado=setCorItem(processo.atualizou)" ng-click="reiniciarEstadoProcessos();estiloAtualizado=setCorItem(processo.atualizou)">
                                 <i class="icon"><img src="./img/pastaAmarela.png" style="width: 40px;height: 30px;"/></i>
                             <span>
-                                <p class="text" style="font-weight: bold">{{processo.descricao}}<p>
-                                <p class="text">{{processo.numero | formataNumProcesso}}</p>
+                                <p class="text" style="font-weight: bold">{{::processo.descricao}}<p>
+                                <p class="text">{{::processo.numero | formataNumProcesso}}</p>
                              </span>
                                 <div class="icon">
                                 <button class="button button-icon ion-edit" style="font-size: 35px" ui-sref="editar({numProcesso: processo.numero, descricao: processo.descricao})"></button>
@@ -34,13 +34,13 @@
                     <div class="list card" style="margin: 0px 0px">
                         <div class="item item-icon-left" ng-repeat="movimentacao in processo.movimentacoes">
 
-                            <i class="icon ion-arrow-right-a" ng-show="movimentacao.primeira"></i>
-                            <i class="icon ion-arrow-up-a" ng-show="!movimentacao.primeira"></i>
-                            <div class="underline_text"> {{movimentacao.tipoEvento}}</div>
+                            <i class="icon ion-arrow-right-a" ng-show="::movimentacao.primeira"></i>
+                            <i class="icon ion-arrow-up-a" ng-show="::!movimentacao.primeira"></i>
+                            <div class="underline_text"> {{::movimentacao.tipoEvento}}</div>
                             <span>
-                              <p class="text">{{movimentacao.dataEvento}}</p>
+                              <p class="text">{{::movimentacao.dataEvento}}</p>
                               <p class="text"><span style="color: #000000; font-weight: bold">Em:</span>
-                                  {{movimentacao.lotacaoAtendente}}</p>
+                                  {{::movimentacao.lotacaoAtendente}}</p>
                              </span>
                         </div>
                     </div>
