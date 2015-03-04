@@ -159,7 +159,7 @@ modController.controller('CadastrarProcessoController', ['$scope', 'processoSrv'
                 );
             }
             else {
-                $scope.mensagem = "Número do processo é inválido!";
+                $scope.mensagem = respostaJson.erro;
                 $scope.openModal();
             }
         };
