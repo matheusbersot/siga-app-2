@@ -17,6 +17,7 @@
   "cordovaPlugins": [
     "de.appplant.cordova.plugin.local-notification",
     "https://github.com/brodysoft/Cordova-SQLitePlugin.git",
-    "org.apache.cordova.splashscreen"
+    "org.apache.cordova.splashscreen",
+    "org.apache.cordova.network-information"
   ]
 }
