@@ -1,7 +1,7 @@
 var modController = angular.module('myApp.controllers');
 
-modController.controller('HomeProcessoController', ['$scope', 'processoSrv',  '$interval', '$cordovaLocalNotification',
-    function ($scope, processoSrv, $interval,$cordovaLocalNotification) {
+modController.controller('HomeProcessoController', ['$scope', 'processoSrv',  '$interval', /*'$cordovaLocalNotification',*/
+    function ($scope, processoSrv, $interval/*,$cordovaLocalNotification*/) {
 
         $scope.umPorVez = true;
         $scope.listaProcessos = [];
@@ -30,7 +30,7 @@ modController.controller('HomeProcessoController', ['$scope', 'processoSrv',  '$
             }
         };
 
-        var notificarUsuarioAtualizacaoProcessos = function()
+        /*var notificarUsuarioAtualizacaoProcessos = function()
         {
             for(var i = 0; i < $scope.listaProcessos.length; ++i)
             {
@@ -44,7 +44,7 @@ modController.controller('HomeProcessoController', ['$scope', 'processoSrv',  '$
                     });
                 }
             }
-        }
+        }*/
 
         $scope.$watch(function () {
             return processoSrv.atualizou;
@@ -54,7 +54,7 @@ modController.controller('HomeProcessoController', ['$scope', 'processoSrv',  '$
                 processoSrv.listaProcessos = [];
 
                 //criar notificações
-                notificarUsuarioAtualizacaoProcessos();
+                //notificarUsuarioAtualizacaoProcessos();
             }
         });
 
@@ -76,6 +76,10 @@ modController.controller('HomeProcessoController', ['$scope', 'processoSrv',  '$
                 return {'background-color': '#FFFFFF'}
             }
         };
+
+        $scope.atualizarTodosProcessos = function(){
+            processoSrv.atualizarTodosProcessos($scope.listaProcessos);
+        }
 
         this.init();
 

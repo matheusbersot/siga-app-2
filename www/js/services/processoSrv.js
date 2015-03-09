@@ -1,5 +1,5 @@
 angular.module('myApp.services')
-    .factory('processoSrv', ['DB', '$interval', '$cordovaNetwork', function (DB, $interval, $cordovaNetwork) {
+    .factory('processoSrv', ['DB', '$interval',/* '$cordovaNetwork',*/ function (DB, $interval/*, $cordovaNetwork*/) {
         var self = this;
 
         self.montarObjProcessos = function (dadosProcessos) {
@@ -40,8 +40,8 @@ angular.module('myApp.services')
 
         self.buscarProcessoSIGA = function (numeroProcesso) {
 
-            if ($cordovaNetwork.isOnline())
-            {
+            //if ($cordovaNetwork.isOnline())
+            //{
                 /* buscar movimentacoes do processo */
                 var url = "http://200.20.0.58:8080/sigaex/servicos/ExService";
 
@@ -49,11 +49,11 @@ angular.module('myApp.services')
                 params.add("numeroProcesso", numeroProcesso);
 
                 return SOAPClient.invoke(url, "consultaMovimentacaoProcesso2", params, false, null);
-            }
-            else
+            //}
+            /*else
             {
                 return "{\"erro\": \"Não há conexão com a internet!\"}";
-            }
+            }*/
 
         };
 

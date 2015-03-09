@@ -9,7 +9,7 @@ angular.module('myApp.controllers', []);
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 
-angular.module('myApp', ['ionic', 'ngCordova','ui.router', 'ui.bootstrap', 'ui.mask', 'myApp.controllers', 'myApp.services', 'myApp.config'])
+angular.module('myApp', ['ionic', /*'ngCordova',*/'ui.router', 'ui.bootstrap', 'ui.mask', 'myApp.controllers', 'myApp.services', 'myApp.config'])
 
     .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -35,7 +35,7 @@ angular.module('myApp', ['ionic', 'ngCordova','ui.router', 'ui.bootstrap', 'ui.m
     })
 
 
-    .run(function ($ionicPlatform, DB, $state, $cordovaSplashscreen) {
+    .run(function ($ionicPlatform, DB, $state/*, $cordovaSplashscreen*/) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -49,7 +49,7 @@ angular.module('myApp', ['ionic', 'ngCordova','ui.router', 'ui.bootstrap', 'ui.m
             //Inicializando o banco de dados
             DB.init().then(function(valor)
             {
-                $cordovaSplashscreen.hide();
+                //$cordovaSplashscreen.hide();
                 $state.go("home");
             });
         })
