@@ -49,6 +49,7 @@ font-family: "Courier New", Courier, monospace;
     border-bottom: 1px solid #ccc;
     border-radius: 4px;
     font-size: 18px;
+    width: 100%;
 }
 
 .custom-input:focus {
