@@ -84,7 +84,7 @@ modController.controller('HomeProcessoController', ['$scope', 'processoSrv',  '$
         this.init();
 
         var promiseAtualizarTodosProcessos;
-        promiseAtualizarTodosProcessos= $interval(function() { processoSrv.atualizarTodosProcessos($scope.listaProcessos); } ,60000); //60s
+        promiseAtualizarTodosProcessos= $interval(function() { processoSrv.atualizarTodosProcessos($scope.listaProcessos); } ,10000); //60s
 
         $scope.$on('$destroy', function() {
             $interval.cancel(promiseAtualizarTodosProcessos);

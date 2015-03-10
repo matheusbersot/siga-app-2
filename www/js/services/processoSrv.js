@@ -1,5 +1,5 @@
 angular.module('myApp.services')
-    .factory('processoSrv', ['DB', '$interval',/* '$cordovaNetwork',*/ function (DB, $interval/*, $cordovaNetwork*/) {
+    .factory('processoSrv', ['DB', '$interval', 'utilSrv', /* '$cordovaNetwork',*/ function (DB, $interval, utilSrv/*, $cordovaNetwork*/) {
         var self = this;
 
         self.montarObjProcessos = function (dadosProcessos) {
@@ -42,13 +42,16 @@ angular.module('myApp.services')
 
             //if ($cordovaNetwork.isOnline())
             //{
-                /* buscar movimentacoes do processo */
-                var url = "http://200.20.0.58:8080/sigaex/servicos/ExService";
+                //só atualiza se estiver dentro do horário comercial 09:00 às 18:00 de Segunda a Sexta.
+                if(utilSrv.estaNoHorarioComercial()){
+                    /* buscar movimentacoes do processo */
+                    var url = "http://200.20.0.58:8080/sigaex/servicos/ExService";
 
-                var params = new SOAPClientParameters();
-                params.add("numeroProcesso", numeroProcesso);
+                    var params = new SOAPClientParameters();
+                    params.add("numeroProcesso", numeroProcesso);
 
-                return SOAPClient.invoke(url, "consultaMovimentacaoProcesso2", params, false, null);
+                    return SOAPClient.invoke(url, "consultaMovimentacaoProcesso2", params, false, null);
+                }
             //}
             /*else
             {
