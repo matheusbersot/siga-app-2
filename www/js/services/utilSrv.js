@@ -1,5 +1,5 @@
 angular.module('myApp.services')
-    .factory('utilSrv', function () {
+    .factory('utilSrv', ['$ionicLoading', function ($ionicLoading) {
 
         var self = this;
 
@@ -19,7 +19,18 @@ angular.module('myApp.services')
             return false;
         }
 
+        self.mostrarPaginaComMensagem = function(msg)
+        {
+            $ionicLoading.show({
+                template: "<ion-spinner></ion-spinner><br/>"+ msg
+            });
+        }
+
+        self.esconderPagina = function(){
+            $ionicLoading.hide();
+        };
+
         return self;
 
-    });
+    }]);
 

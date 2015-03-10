@@ -1,7 +1,7 @@
 var modController = angular.module('myApp.controllers');
 
-modController.controller('HomeProcessoController', ['$scope', 'processoSrv',  '$interval', /*'$cordovaLocalNotification',*/
-    function ($scope, processoSrv, $interval/*,$cordovaLocalNotification*/) {
+modController.controller('HomeProcessoController', ['$scope', 'processoSrv',  '$interval', 'utilSrv', /*'$cordovaLocalNotification',*/
+    function ($scope, processoSrv, $interval, utilSrv /*,$cordovaLocalNotification*/) {
 
         $scope.umPorVez = true;
         $scope.listaProcessos = [];
@@ -78,7 +78,9 @@ modController.controller('HomeProcessoController', ['$scope', 'processoSrv',  '$
         };
 
         $scope.atualizarTodosProcessos = function(){
+            utilSrv.mostrarPaginaComMensagem("Atualizando...");
             processoSrv.atualizarTodosProcessos($scope.listaProcessos);
+            utilSrv.esconderPagina();
         }
 
         this.init();
@@ -107,8 +109,8 @@ modController.controller('EditarProcessoController', ['$scope', 'processoSrv', '
     }]);
 
 
-modController.controller('CadastrarProcessoController', ['$scope', 'processoSrv', '$state', '$ionicModal',
-    function ($scope, processoSrv, $state, $ionicModal) {
+modController.controller('CadastrarProcessoController', ['$scope', 'processoSrv', '$state', '$ionicModal', 'utilSrv',
+    function ($scope, processoSrv, $state, $ionicModal, utilSrv) {
 
         $scope.numProcesso = "";
         $scope.descricao = "";
@@ -141,6 +143,8 @@ modController.controller('CadastrarProcessoController', ['$scope', 'processoSrv'
 
         $scope.salvar = function () {
 
+            utilSrv.mostrarPaginaComMensagem("Cadastrando processo...");
+
             var resposta = processoSrv.buscarProcessoSIGA($scope.numProcesso);
             var respostaJson = JSON.parse(resposta);
 
@@ -151,6 +155,9 @@ modController.controller('CadastrarProcessoController', ['$scope', 'processoSrv'
 
                 processoSrv.processoEstaCadastrado($scope.numProcesso)
                     .then(function (estaCadastrado) {
+
+                        utilSrv.esconderPagina();
+
                         if (!estaCadastrado) {
                             processoSrv.inserirProcesso($scope.numProcesso, $scope.descricao, dataUltimaMovimentacao, movimentacoes);
                             $state.go("home");
@@ -163,6 +170,7 @@ modController.controller('CadastrarProcessoController', ['$scope', 'processoSrv'
                 );
             }
             else {
+                utilSrv.esconderPagina();
                 $scope.mensagem = respostaJson.erro;
                 $scope.openModal();
             }
