@@ -132,14 +132,6 @@ modController.controller('CadastrarProcessoController', ['$scope', 'processoSrv'
         $scope.$on('$destroy', function() {
             $scope.modal.remove();
         });
-        // Execute action on hide modal
-        $scope.$on('modal.hidden', function() {
-            // Execute action
-        });
-        // Execute action on remove modal
-        $scope.$on('modal.removed', function() {
-            // Execute action
-        });
 
         $scope.salvar = function () {
 
@@ -191,4 +183,4 @@ modController.filter('formataNumProcesso', function() {
         }
         return saida;
     };
-})
+});
