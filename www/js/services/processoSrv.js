@@ -1,5 +1,6 @@
 angular.module('myApp.services')
-    .factory('processoSrv', ['DB', '$interval', 'utilSrv', /* '$cordovaNetwork',*/ function (DB, $interval, utilSrv/*, $cordovaNetwork*/) {
+    .factory('processoSrv', ['$interval', '$q', /*'$cordovaNetwork',*/ 'DB', 'utilSrv',
+        function ($interval, $q /*, $cordovaNetwork*/, DB, utilSrv) {
         var self = this;
 
         self.montarObjProcessos = function (dadosProcessos) {
@@ -40,24 +41,25 @@ angular.module('myApp.services')
 
         self.buscarProcessoSIGA = function (numeroProcesso) {
 
+            var deferred = $q.defer();
+
             //if ($cordovaNetwork.isOnline())
             //{
                 //só atualiza se estiver dentro do horário comercial 09:00 às 18:00 de Segunda a Sexta.
-                if(utilSrv.estaNoHorarioComercial()){
-                    /* buscar movimentacoes do processo */
-                    var url = "http://200.20.0.58:8080/sigaex/servicos/ExService";
+                /* buscar movimentacoes do processo */
+                var url = "http://192.168.1.50:8081/sigaex/servicos/ExService";
 
-                    var params = new SOAPClientParameters();
-                    params.add("numeroProcesso", numeroProcesso);
+                var params = new SOAPClientParameters();
+                params.add("numeroProcesso", numeroProcesso);
 
-                    return SOAPClient.invoke(url, "consultaMovimentacaoProcesso2", params, false, null);
-                }
-            //}
-            /*else
+                deferred.resolve(SOAPClient.invoke(url, "consultaMovimentacaoProcesso", params, false, null));
+            /*}
+            else
             {
-                return "{\"erro\": \"Não há conexão com a internet!\"}";
+             deferred.reject("{\"erro\": \"Não há conexão com a internet!\"}");
             }*/
 
+            return deferred.promise;
         };
 
         self.buscarTodosProcessos = function () {
@@ -134,36 +136,43 @@ angular.module('myApp.services')
 
         self.atualizarTodosProcessos = function (listaDeProcessos) {
 
-            self.atualizou = false;
-            self.listaProcessos = listaDeProcessos;
+            if(utilSrv.estaNoHorarioComercial()){
+                self.atualizou = false;
+                self.listaProcessos = listaDeProcessos;
 
-            for (var i = 0; i < self.listaProcessos.length; ++i) {
+                for (var i = 0; i < self.listaProcessos.length; ++i) {
 
-                //busca processo no servidor
-                var resposta = self.buscarProcessoSIGA(self.listaProcessos[i].numero);
-                var respostaJson = JSON.parse(resposta);
+                    processoAtual = self.listaProcessos[i];
 
-                if (!respostaJson.erro) {
+                    //busca processo no servidor
+                    self.buscarProcessoSIGA(processoAtual.numero)
+                        .then(function(resposta) {
 
-                    var movimentacoes = resposta;
-                    var dataUltimaMovimentacao = respostaJson.resposta[0].dataEvento;
-                    var objMovimentacoes = self.montarObjMovimentacoes(movimentacoes);
+                            var respostaJson = JSON.parse(resposta);
 
-                    //verifica se há movimentações novas
-                    if (objMovimentacoes.length != self.listaProcessos[i].movimentacoes.length) {
+                            if (!respostaJson.erro) {
 
-                        var objProcesso = self.listaProcessos[i];
+                                var movimentacoes = resposta;
+                                var dataUltimaMovimentacao = respostaJson.resposta[0].dataEvento;
+                                var objMovimentacoes = self.montarObjMovimentacoes(movimentacoes);
 
-                        // se houver, atualiza os dados do processo
-                        self.atualizarProcesso(dataUltimaMovimentacao, movimentacoes, self.listaProcessos[i].numero)
-                            .then(function () {
-                                objProcesso.dataUltimaMovimentacao = dataUltimaMovimentacao;
-                                objProcesso.movimentacoes = objMovimentacoes;
-                                objProcesso.atualizou = true;
-                                self.atualizou = true;
+                                //verifica se há movimentações novas
+                                if (objMovimentacoes.length != processoAtual.movimentacoes.length) {
+
+                                    var objProcesso = self.listaProcessos[i];
+
+                                    // se houver, atualiza os dados do processo
+                                    self.atualizarProcesso(dataUltimaMovimentacao, movimentacoes, self.listaProcessos[i].numero)
+                                        .then(function () {
+                                            objProcesso.dataUltimaMovimentacao = dataUltimaMovimentacao;
+                                            objProcesso.movimentacoes = objMovimentacoes;
+                                            objProcesso.atualizou = true;
+                                            self.atualizou = true;
+                                        }
+                                    )
+                                }
                             }
-                        )
-                    }
+                        });
                 }
             }
         };

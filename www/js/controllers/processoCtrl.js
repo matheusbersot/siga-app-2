@@ -1,11 +1,19 @@
 var modController = angular.module('myApp.controllers');
 
-modController.controller('HomeProcessoController', ['$scope', 'processoSrv',  '$interval', 'utilSrv', /*'$cordovaLocalNotification',*/
-    function ($scope, processoSrv, $interval, utilSrv /*,$cordovaLocalNotification*/) {
+modController.controller('HomeProcessoController', ['$scope', '$interval' /*'$cordovaLocalNotification',*/ ,'processoSrv', 'utilSrv',
+    function ($scope, $interval /*, $cordovaLocalNotification*/, processoSrv, utilSrv) {
 
         $scope.umPorVez = true;
         $scope.listaProcessos = [];
         $scope.estiloAtualizado = {'background-color': '#FFFFFF'};
+
+        /*constantes*/
+        var TIPO_MOVIMENTACAO_TRANSFERENCIA = 3;
+        var TIPO_MOVIMENTACAO_DESPACHO_TRANSFERENCIA = 6;
+        var TIPO_MOVIMENTACAO_DESPACHO_INTERNO_TRANSFERENCIA = 8;
+        var TIPO_MOVIMENTACAO_TRANSFERENCIA_EXTERNA = 17;
+        var TIPO_MOVIMENTACAO_DESPACHO_TRANSFERENCIA_EXTERNA = 18;
+
 
         this.init = function () {
 
@@ -28,6 +36,19 @@ modController.controller('HomeProcessoController', ['$scope', 'processoSrv',  '$
                 }
                 ++i;
             }
+        };
+
+        $scope.exibirTransferencia = function(idTipoMovimentacao)
+        {
+            if ((idTipoMovimentacao == TIPO_MOVIMENTACAO_TRANSFERENCIA)
+            ||(idTipoMovimentacao == TIPO_MOVIMENTACAO_DESPACHO_TRANSFERENCIA)
+            ||(idTipoMovimentacao == TIPO_MOVIMENTACAO_DESPACHO_INTERNO_TRANSFERENCIA)
+            ||(idTipoMovimentacao == TIPO_MOVIMENTACAO_TRANSFERENCIA_EXTERNA)
+            ||(idTipoMovimentacao == TIPO_MOVIMENTACAO_DESPACHO_TRANSFERENCIA_EXTERNA))
+            {
+                return true;
+            }
+            return false;
         };
 
         /*var notificarUsuarioAtualizacaoProcessos = function()
@@ -79,9 +100,14 @@ modController.controller('HomeProcessoController', ['$scope', 'processoSrv',  '$
 
         $scope.atualizarTodosProcessos = function(){
             utilSrv.mostrarPaginaComMensagem("Atualizando...");
-            processoSrv.atualizarTodosProcessos($scope.listaProcessos);
-            utilSrv.esconderPagina();
-        }
+
+            //$interval(function() { processoSrv.atualizarTodosProcessos($scope.listaProcessos); } ,0, 1);
+            var promise_teste = $interval(function() { for(var i=0; i< 100000; ++i) {var a = i*2;} } , 0, 1);
+            //var promise_teste = $interval(function() { processoSrv.atualizarTodosProcessos($scope.listaProcessos); } , 0, 1);
+            promise_teste.then(function(){
+                utilSrv.esconderPagina();
+            })
+        };
 
         this.init();
 
@@ -94,8 +120,8 @@ modController.controller('HomeProcessoController', ['$scope', 'processoSrv',  '$
 
     }]);
 
-modController.controller('EditarProcessoController', ['$scope', 'processoSrv', '$stateParams',
-    function ($scope, processoSrv, $stateParams) {
+modController.controller('EditarProcessoController', ['$scope', '$stateParams', 'processoSrv',
+    function ($scope, $stateParams, processoSrv) {
 
         $scope.numProcesso = $stateParams.numProcesso;
         $scope.descricao = $stateParams.descricao;
@@ -109,8 +135,8 @@ modController.controller('EditarProcessoController', ['$scope', 'processoSrv', '
     }]);
 
 
-modController.controller('CadastrarProcessoController', ['$scope', 'processoSrv', '$state', '$ionicModal', 'utilSrv',
-    function ($scope, processoSrv, $state, $ionicModal, utilSrv) {
+modController.controller('CadastrarProcessoController', ['$scope', '$state', '$ionicModal', 'processoSrv', 'utilSrv',
+    function ($scope, $state, $ionicModal, processoSrv, utilSrv) {
 
         $scope.numProcesso = "";
         $scope.descricao = "";
@@ -137,35 +163,40 @@ modController.controller('CadastrarProcessoController', ['$scope', 'processoSrv'
 
             utilSrv.mostrarPaginaComMensagem("Cadastrando processo...");
 
-            var resposta = processoSrv.buscarProcessoSIGA($scope.numProcesso);
-            var respostaJson = JSON.parse(resposta);
+            var resposta = processoSrv.buscarProcessoSIGA();
 
-            if (!respostaJson.erro) {
-                var movimentacoes = resposta;
-                var dataUltimaMovimentacao = respostaJson.resposta[0].dataEvento;
+            processoSrv.buscarProcessoSIGA($scope.numProcesso)
+                .then(function(resposta) {
+
+                    var respostaJson = JSON.parse(resposta);
+
+                    if (!respostaJson.erro) {
+                        var movimentacoes = resposta;
+                        var dataUltimaMovimentacao = respostaJson.resposta[0].dataEvento;
 
 
-                processoSrv.processoEstaCadastrado($scope.numProcesso)
-                    .then(function (estaCadastrado) {
+                        processoSrv.processoEstaCadastrado($scope.numProcesso)
+                            .then(function (estaCadastrado) {
 
-                        utilSrv.esconderPagina();
+                                utilSrv.esconderPagina();
 
-                        if (!estaCadastrado) {
-                            processoSrv.inserirProcesso($scope.numProcesso, $scope.descricao, dataUltimaMovimentacao, movimentacoes);
-                            $state.go("home");
-                        }
-                        else {
-                            $scope.mensagem = "Esse processo já se encontra cadastrado!";
-                            $scope.openModal();
-                        }
+                                if (!estaCadastrado) {
+                                    processoSrv.inserirProcesso($scope.numProcesso, $scope.descricao, dataUltimaMovimentacao, movimentacoes);
+                                    $state.go("home");
+                                }
+                                else {
+                                    $scope.mensagem = "Esse processo já se encontra cadastrado!";
+                                    $scope.openModal();
+                                }
+                            }
+                        );
                     }
-                );
-            }
-            else {
-                utilSrv.esconderPagina();
-                $scope.mensagem = respostaJson.erro;
-                $scope.openModal();
-            }
+                    else {
+                        utilSrv.esconderPagina();
+                        $scope.mensagem = respostaJson.erro;
+                        $scope.openModal();
+                    }
+                });
         };
     }]);
 

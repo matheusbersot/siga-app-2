@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c598c6e1-e4d0-42b1-b221-887111ad847d" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/js/controller/processoCtrl.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/js/lib/json2.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/js/lib/soapclient.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/js/lib/ui-bootstrap-tpls-0.12.0.js" afterPath="" />
@@ -16,7 +17,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/js/angular/angular.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/js/angular/angular.min.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/version.json" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/controller/processoCtrl.js" afterPath="$PROJECT_DIR$/js/controllers/processoCtrl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/res/drawable/icon.png" afterPath="$PROJECT_DIR$/../platforms/android/res/drawable/icon.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/res/drawable-hdpi/icon.png" afterPath="$PROJECT_DIR$/../platforms/android/res/drawable-hdpi/icon.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/res/drawable-ldpi/icon.png" afterPath="$PROJECT_DIR$/../platforms/android/res/drawable-ldpi/icon.png" />
@@ -31,14 +31,14 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/res/drawable-port-mdpi/screen.png" afterPath="$PROJECT_DIR$/../platforms/android/res/drawable-port-mdpi/screen.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../platforms/android/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/js/app.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app.js" afterPath="$PROJECT_DIR$/js/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/cadastrar.html" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/cadastrar.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/res/xml/config.xml" afterPath="$PROJECT_DIR$/../platforms/android/res/xml/config.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/cordova_plugins.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/cordova_plugins.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/editar.html" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/editar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editar.html" afterPath="$PROJECT_DIR$/editar.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/home.html" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home.html" afterPath="$PROJECT_DIR$/home.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/index.html" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/js/ionic-angular.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/js/ionic-angular.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/js/ionic-angular.min.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/js/ionic-angular.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/js/ionic.bundle.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/js/ionic.bundle.js" />
@@ -48,10 +48,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/css/ionic.min.css" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/css/ionic.min.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/js/ionic.min.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/js/ionic.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/fonts/ionicons.svg" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/fonts/ionicons.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/js/controller/processoCtrl.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/js/controller/processoCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/processoCtrl.js" afterPath="$PROJECT_DIR$/js/controllers/processoCtrl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/js/services/processoSrv.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/js/services/processoSrv.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/services/processoSrv.js" afterPath="$PROJECT_DIR$/js/services/processoSrv.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/css/style.css" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="www.iws" />
@@ -79,56 +79,33 @@
       <file leaf-file-name="processoCtrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/controllers/processoCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2281" max-vertical-offset="2865">
-              <caret line="127" column="25" selection-start-line="127" selection-start-column="25" selection-end-line="127" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="3330">
+              <caret line="51" column="10" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/app.js">
+      <file leaf-file-name="processoSrv.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/services/processoSrv.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.10273973" vertical-offset="0" max-vertical-offset="945">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2805">
+              <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editar.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/editar.html">
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.5" vertical-offset="0" max-vertical-offset="540">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.42857143" vertical-offset="330" max-vertical-offset="960">
+              <caret line="38" column="35" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
               <folding>
-                <element signature="n#style#0;n#ion-header-bar#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#ion-header-bar#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h1#0;n#ion-header-bar#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#1;n#ion-header-bar#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#form#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#form#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#p#1;n#span#0;n#div#0;n#div#0;n#accordion-group#0;n#accordion#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#p#2;n#span#0;n#div#0;n#div#0;n#accordion-group#0;n#accordion#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#p#2;n#span#0;n#div#0;n#div#0;n#accordion-group#0;n#accordion#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.875" vertical-offset="0" max-vertical-offset="900">
-              <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="2145">
-              <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -157,8 +134,6 @@
         <option value="$PROJECT_DIR$/lib/ionic/css/ionic.css" />
         <option value="$PROJECT_DIR$/modalAlerta.html" />
         <option value="$PROJECT_DIR$/js/services/UtilSrv.js" />
-        <option value="$PROJECT_DIR$/js/services/processoSrv.js" />
-        <option value="$PROJECT_DIR$/home.html" />
         <option value="$PROJECT_DIR$/lib/ionic/js/spinner.js" />
         <option value="$PROJECT_DIR$/lib/ionic/js/ionic.bundle.js" />
         <option value="$PROJECT_DIR$/modalMensagem.html" />
@@ -166,11 +141,13 @@
         <option value="$PROJECT_DIR$/cadastrar.html" />
         <option value="$PROJECT_DIR$/js/controller/processoCtrl.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/controllers/processoCtrl.js" />
         <option value="$PROJECT_DIR$/js/directives/utilDrt.js" />
         <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/editar.html" />
         <option value="$PROJECT_DIR$/js/app.js" />
+        <option value="$PROJECT_DIR$/js/services/processoSrv.js" />
+        <option value="$PROJECT_DIR$/js/controllers/processoCtrl.js" />
+        <option value="$PROJECT_DIR$/home.html" />
       </list>
     </option>
   </component>
@@ -178,10 +155,9 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
     <option name="y" value="24" />
-    <option name="width" value="1368" />
-    <option name="height" value="721" />
+    <option name="width" value="1366" />
+    <option name="height" value="720" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -237,6 +213,24 @@
               <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui-bootstrap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -249,6 +243,42 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -344,27 +374,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="24" width="1368" height="721" extended-state="7" />
+    <frame x="0" y="24" width="1366" height="720" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22474378" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13141026" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1845907" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -394,7 +424,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="630">
           <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -620,35 +649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/services/dbSrv.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1215">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ui-bootstrap/ui-bootstrap-tpls-0.12.0.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13274336" vertical-offset="58620" max-vertical-offset="63180">
-          <caret line="3918" column="49" selection-start-line="3918" selection-start-column="35" selection-end-line="3918" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ngCordova/ng-cordova.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="210">
-          <caret line="7" column="18852" selection-start-line="7" selection-start-column="18837" selection-end-line="7" selection-end-column="18852" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/soapClient-js/soapclient.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3321918" vertical-offset="1711" max-vertical-offset="6240">
-          <caret line="127" column="11" selection-start-line="127" selection-start-column="11" selection-end-line="127" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/ionic/js/ionic.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="584">
@@ -681,34 +681,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/services/processoSrv.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.7097626" vertical-offset="765" max-vertical-offset="2670">
-          <caret line="170" column="20" selection-start-line="170" selection-start-column="8" selection-end-line="170" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/ionic/css/ionic.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="348" max-vertical-offset="113910">
           <caret line="31" column="7142" selection-start-line="31" selection-start-column="7132" selection-end-line="31" selection-end-column="7142" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.75" vertical-offset="300" max-vertical-offset="960">
-          <caret line="26" column="88" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="88" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/services/utilSrv.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="33" max-vertical-offset="630">
-          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -716,59 +692,110 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18324608" vertical-offset="0" max-vertical-offset="573">
           <caret line="7" column="82" selection-start-line="7" selection-start-column="73" selection-end-line="7" selection-end-column="82" />
-          <folding>
-            <element signature="n#style#0;n#ion-header-bar#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#button#0;n#ion-header-bar#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#h1#0;n#ion-header-bar#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#button#1;n#ion-header-bar#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/processoCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2281" max-vertical-offset="2865">
-          <caret line="127" column="25" selection-start-line="127" selection-start-column="25" selection-end-line="127" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="2145">
+        <state vertical-scroll-proportion="0.5393836" vertical-offset="450" max-vertical-offset="2145">
           <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services/utilSrv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="33" max-vertical-offset="630">
+          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/AJAX.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="821" max-vertical-offset="1815">
+          <caret line="68" column="9" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services/dbSrv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1215">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ngCordova/ng-cordova.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.051369864" vertical-offset="0" max-vertical-offset="584">
+          <caret line="7" column="18852" selection-start-line="7" selection-start-column="18837" selection-end-line="7" selection-end-column="18852" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/soapClient-js/soapclient.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8458904" vertical-offset="4576" max-vertical-offset="6240">
+          <caret line="338" column="24" selection-start-line="338" selection-start-column="24" selection-end-line="338" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/editar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.5" vertical-offset="0" max-vertical-offset="540">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#ion-header-bar#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#ion-header-bar#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h1#0;n#ion-header-bar#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#ion-header-bar#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#form#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#form#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="540">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ui-bootstrap/ui-bootstrap-tpls-0.12.0.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3321918" vertical-offset="2911" max-vertical-offset="63180">
+          <caret line="213" column="11" selection-start-line="213" selection-start-column="11" selection-end-line="213" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.875" vertical-offset="0" max-vertical-offset="900">
-          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.34642857" vertical-offset="181" max-vertical-offset="900">
+          <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10273973" vertical-offset="0" max-vertical-offset="945">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.28253424" vertical-offset="0" max-vertical-offset="915">
+          <caret line="11" column="69" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/processoCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="3330">
+          <caret line="51" column="10" selection-start-line="51" selection-start-column="10" selection-end-line="51" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services/processoSrv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2805">
+          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42857143" vertical-offset="330" max-vertical-offset="960">
+          <caret line="38" column="35" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#p#1;n#span#0;n#div#0;n#div#0;n#accordion-group#0;n#accordion#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#2;n#span#0;n#div#0;n#div#0;n#accordion-group#0;n#accordion#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#p#2;n#span#0;n#div#0;n#div#0;n#accordion-group#0;n#accordion#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
