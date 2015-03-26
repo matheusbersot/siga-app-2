@@ -135,4 +135,12 @@ font-family: "Courier New", Courier, monospace;
     .platform-ios.platform-cordova .modal-wrapper .modal .has-tabs-top {
         top: 93px; }
     .platform-ios.platform-cordova .modal-wrapper .modal .has-header.has-subheader.has-tabs-top {
-        top: 137px; } }
+        top: 137px; }
+    .modal-backdrop {
+        -webkit-transition: background-color 300ms ease-in-out;
+        transition: background-color 300ms ease-in-out;
+        background-color: rgba(0, 0, 0, 0); }
+    .modal-backdrop.active {
+        background-color: rgba(0, 0, 0, 0.5); }
+}
+
