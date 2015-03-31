@@ -89,7 +89,7 @@ modController.controller('HomeProcessoController', ['$scope', '$interval',/*'$co
                 );
         };
 
-        /*var promiseAtualizarTodosProcessos= $interval(
+        var promiseAtualizarTodosProcessos= $interval(
             function() {
                 processoSrv.atualizarTodosProcessos($scope.listaProcessos)
                     .then( function(){
@@ -100,7 +100,7 @@ modController.controller('HomeProcessoController', ['$scope', '$interval',/*'$co
 
         $scope.$on('$destroy', function() {
             $interval.cancel(promiseAtualizarTodosProcessos);
-        });*/
+        });
 
         this.init();
 
