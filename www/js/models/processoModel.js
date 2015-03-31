@@ -6,7 +6,7 @@ modModel.factory('Processo', ['Movimentacao', function (Movimentacao){
             if (dados) {
 
                 this.descricao = dados.descricao;
-                this.numero = dados.codProcesso;
+                this.numero = dados.numeroProcesso;
                 this.dataUltimaMovimentacao = dados.dataUltimaMovimentacao;
                 this.movimentacoes = [];
                 this.setMovimentacoes(dados.movimentacoes);
@@ -18,6 +18,7 @@ modModel.factory('Processo', ['Movimentacao', function (Movimentacao){
 
             setMovimentacoes: function(dadosMovimentacoes){
 
+                this.movimentacoes = [];
                 var arrayObjetos = JSON.parse(dadosMovimentacoes).resposta;
 
                 for (var i = 0; i < arrayObjetos.length; ++i) {

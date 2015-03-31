@@ -16,9 +16,9 @@ modController.controller('HomeProcessoController', ['$scope', '$interval',/*'$co
             )
         };
 
-        $scope.remover = function (codProcesso) {
+        $scope.remover = function (numeroProcesso) {
 
-            processoSrv.removerProcesso(codProcesso, $scope.listaProcessos);
+            processoSrv.removerProcesso(numeroProcesso, $scope.listaProcessos);
 
             //TODO: retornar msg de erro para usuario caso não consiga remover processo.
         };
@@ -71,38 +71,36 @@ modController.controller('HomeProcessoController', ['$scope', '$interval',/*'$co
             }
         }*/
 
-        /*$scope.$watch(function () {
-            return processoSrv.atualizou;
-        }, function () {
-            if (processoSrv.atualizou) {
-                $scope.listaProcessos = processoSrv.listaProcessos;
-                processoSrv.listaProcessos = [];
-
-                //criar notificações
-                //notificarUsuarioAtualizacaoProcessos();
-            }
-        });
-
         $scope.atualizarTodosProcessos = function(){
 
             utilSrv.mostrarPaginaComMensagem("Atualizando...");
 
-            var promiseAtualizacao = processoSrv.atualizarTodosProcessos($scope.listaProcessos);
-            promiseAtualizacao.then(function(){
-                utilSrv.esconderPagina();
-            },function(razaoErro)
-                {
+            processoSrv.atualizarTodosProcessos($scope.listaProcessos)
+                .then(function(){
                     utilSrv.esconderPagina();
-                }
-            );
-        };*/
 
-        var promiseAtualizarTodosProcessos;
-        promiseAtualizarTodosProcessos= $interval(function() { processoSrv.atualizarTodosProcessos($scope.listaProcessos); } ,10000); //10s
+                    //criar notificações
+                    //notificarUsuarioAtualizacaoProcessos();
+
+                },function(msgErro)
+                    {
+                        utilSrv.esconderPagina();
+                    }
+                );
+        };
+
+        /*var promiseAtualizarTodosProcessos= $interval(
+            function() {
+                processoSrv.atualizarTodosProcessos($scope.listaProcessos)
+                    .then( function(){
+                        //criar notificações
+                       //notificarUsuarioAtualizacaoProcessos();
+                    });
+            } ,10000); //10s
 
         $scope.$on('$destroy', function() {
             $interval.cancel(promiseAtualizarTodosProcessos);
-        });
+        });*/
 
         this.init();
 

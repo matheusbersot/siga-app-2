@@ -50,11 +50,11 @@ angular.module('myApp.services')
             return deferred.promise;
         };
 
-        self.editarProcesso = function(codProcesso, descricao)
+        self.editarProcesso = function(numeroProcesso, descricao)
         {
             var deferred = $q.defer();
 
-            processoDbSrv.editarProcesso(codProcesso, descricao)
+            processoDbSrv.editarProcesso(numeroProcesso, descricao)
                 .then(function (resultado){
                     deferred.resolve(resultado);
                 },
@@ -66,14 +66,14 @@ angular.module('myApp.services')
             return deferred.promise;
         };
 
-        self.removerProcesso= function(codProcesso, vetorProcessos)
+        self.removerProcesso= function(numeroProcesso, vetorProcessos)
         {
             var deferred = $q.defer();
 
-            processoDbSrv.removerProcesso(codProcesso)
+            processoDbSrv.removerProcesso(numeroProcesso)
                 .then(function(resultado)
                 {
-                    _.remove(vetorProcessos, 'numero', codProcesso);
+                    _.remove(vetorProcessos, 'numero', numeroProcesso);
                     deferred.resolve(resultado);
                 },
                 function(msgErro)
@@ -84,11 +84,11 @@ angular.module('myApp.services')
             return deferred.promise;
         };
 
-        self.processoEstaCadastrado = function(codProcesso)
+        self.processoEstaCadastrado = function(numeroProcesso)
         {
             var deferred = $q.defer();
 
-            processoDbSrv.processoEstaCadastrado(codProcesso)
+            processoDbSrv.processoEstaCadastrado(numeroProcesso)
                 .then(function(resultado)
                 {
                     deferred.resolve(resultado);
@@ -101,11 +101,11 @@ angular.module('myApp.services')
             return deferred.promise;
         }
 
-        self.inserirProcesso = function(codProcesso, descricao, dataUltimaMovimentacao, movimentacoes)
+        self.inserirProcesso = function(numeroProcesso, descricao, dataUltimaMovimentacao, movimentacoes)
         {
             var deferred = $q.defer();
 
-            processoDbSrv.inserirProcesso(codProcesso, descricao, dataUltimaMovimentacao, movimentacoes)
+            processoDbSrv.inserirProcesso(numeroProcesso, descricao, dataUltimaMovimentacao, movimentacoes)
                 .then(function(resultado)
                 {
                     deferred.resolve(resultado);
@@ -118,75 +118,75 @@ angular.module('myApp.services')
             return deferred.promise;
         }
 
+        self.atualizarTodosProcessos = function (vetorProcessos) {
 
-            /*self.listaProcessos = [];
-            self.atualizou = false;
+            var deferred = $q.defer();
 
-            self.atualizarTodosProcessos = function (listaDeProcessos) {
+            if(utilSrv.estaNoHorarioComercial()){
 
-                var deferred = $q.defer();
+                for (var i = 0; i < vetorProcessos.length; ++i) {
 
-                if(utilSrv.estaNoHorarioComercial()){
-                    var atualizou = false;
-                    var listaProcessos = listaDeProcessos;
-
-                    for (var i = 0; i < self.listaProcessos.length; ++i) {
-
-                        self.atualizaProcesso(self.listaProcessos[i])
-                            .then(function(resposta){
-                                deferred.resolve(resposta);
-                        }, function(razaoErro)
-                            {
-                                deferred.reject(razaoErro);
-                            });
-                    }
-                }
-            };
-
-            self.atualizarProcesso = function(processo)
-            {
-                var deferred = $q.defer();
-
-                //busca processo no servidor
-                self.buscarProcessoSIGA(processo.numero)
-                    .then(function(resposta) {
-
-                        var respostaJson = JSON.parse(resposta);
-
-                        if (!respostaJson.erro) {
-
-                            var movimentacoes = resposta;
-                            var dataUltimaMovimentacao = respostaJson.resposta[0].dataEvento;
-                            var objMovimentacoes = self.montarObjMovimentacoes(movimentacoes);
-
-                            //verifica se há movimentações novas
-                            if (objMovimentacoes.length != processoAtual.movimentacoes.length) {
-
-                                var objProcesso = processo;
-
-                                // se houver, atualiza os dados do processo
-                                self.atualizarProcesso(dataUltimaMovimentacao, movimentacoes, processo.numero)
-                                    .then(function () {
-                                        objProcesso.dataUltimaMovimentacao = dataUltimaMovimentacao;
-                                        objProcesso.movimentacoes = objMovimentacoes;
-                                        objProcesso.atualizou = true;
-                                        self.atualizou = true;
-
-                                        deferred.resolve("Atualizou");
-                                    }
-                                )
-                            }
-                        }
-                        else
-                        {
-                            deferred.reject("Erro");
-                        }
+                    self.atualizarProcesso(vetorProcessos[i])
+                        .then(function(resposta){
+                            deferred.resolve(resposta);
                     },
                     function(razaoErro)
                     {
                         deferred.reject(razaoErro);
                     });
-            };*/
+                }
+            }
+            return deferred.promise;
+        };
+
+        self.atualizarProcesso = function(processo)
+        {
+            var deferred = $q.defer();
+
+            //busca processo no servidor
+            self.buscarProcessoSIGA(processo.numero)
+                .then(function(movimentacoesJson) {
+
+                    var resultado = JSON.parse(movimentacoesJson);
+
+                    if (!resultado.erro) {
+
+                        var vetorMovimentacoes = resultado.resposta;
+                        var dataUltimaMovimentacao = vetorMovimentacoes[0].dataEvento;
+
+                        //verifica se há movimentações novas
+                        if (vetorMovimentacoes.length != processo.movimentacoes.length) {
+
+                            // se houver, atualiza os dados do processo
+                            processoDbSrv.atualizarProcesso(dataUltimaMovimentacao, movimentacoesJson, processo.numero)
+                                .then(function () {
+                                    processo.dataUltimaMovimentacao = dataUltimaMovimentacao;
+                                    processo.setMovimentacoes(movimentacoesJson);
+                                    processo.atualizou = true;
+
+                                    deferred.resolve(true);
+                                },
+                                function (msgErro) {
+                                    deferred.reject(msgErro);
+                                }
+                            )
+                        }
+                        else
+                        {
+                            deferred.resolve(false);
+                        }
+                    }
+                    else
+                    {
+                        deferred.reject(respostaJson.erro);
+                    }
+                },
+                function(msgErro)
+                {
+                    deferred.reject(msgErro);
+                });
+            return deferred.promise;
+        };
 
         return self;
     }]);

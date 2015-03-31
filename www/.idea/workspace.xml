@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c598c6e1-e4d0-42b1-b221-887111ad847d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/services/constanteSrv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/models/movimentacaoModel.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/services/processoDbSrv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/models/processoModel.js" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/js/controller/processoCtrl.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/js/lib/json2.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/js/lib/soapclient.js" afterPath="" />
@@ -35,7 +31,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/res/drawable-port-mdpi/screen.png" afterPath="$PROJECT_DIR$/../platforms/android/res/drawable-port-mdpi/screen.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/AndroidManifest.xml" afterPath="$PROJECT_DIR$/../platforms/android/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/js/app.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app.js" afterPath="$PROJECT_DIR$/js/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/cadastrar.html" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/cadastrar.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/config/config.js" afterPath="$PROJECT_DIR$/js/config/config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/res/xml/config.xml" afterPath="$PROJECT_DIR$/../platforms/android/res/xml/config.xml" />
@@ -43,7 +38,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/editar.html" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/editar.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/home.html" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/home.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/index.html" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/js/ionic-angular.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/js/ionic-angular.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/js/ionic-angular.min.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/js/ionic-angular.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/js/ionic.bundle.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/js/ionic.bundle.js" />
@@ -54,10 +48,11 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/js/ionic.min.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/js/ionic.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/fonts/ionicons.svg" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/lib/ionic/fonts/ionicons.svg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/processoCtrl.js" afterPath="$PROJECT_DIR$/js/controllers/processoCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/services/processoDbSrv.js" afterPath="$PROJECT_DIR$/js/services/processoDbSrv.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/models/processoModel.js" afterPath="$PROJECT_DIR$/js/models/processoModel.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/js/services/processoSrv.js" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/js/services/processoSrv.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/services/processoSrv.js" afterPath="$PROJECT_DIR$/js/services/processoSrv.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../platforms/android/assets/www/css/style.css" afterPath="$PROJECT_DIR$/../platforms/android/assets/www/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="www.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -84,8 +79,8 @@
       <file leaf-file-name="processoCtrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/controllers/processoCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="3210">
-              <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="900" max-vertical-offset="3180">
+              <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -94,18 +89,18 @@
       <file leaf-file-name="processoSrv.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/services/processoSrv.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1575" max-vertical-offset="2970">
-              <caret line="47" column="19" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="959" max-vertical-offset="2970">
+              <caret line="120" column="63" selection-start-line="120" selection-start-column="49" selection-end-line="120" selection-end-column="63" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.html">
+      <file leaf-file-name="processoModel.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/models/processoModel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9685864" vertical-offset="0" max-vertical-offset="855">
-              <caret line="37" column="37" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.6237006" vertical-offset="0" max-vertical-offset="585">
+              <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -146,16 +141,16 @@
         <option value="$PROJECT_DIR$/lib/ionic/css/ionic.css" />
         <option value="$PROJECT_DIR$/lib/ionic/css/ionic.min.css" />
         <option value="$PROJECT_DIR$/css/style.css" />
-        <option value="$PROJECT_DIR$/js/config/config.js" />
         <option value="$PROJECT_DIR$/js/services/constanteSrv.js" />
         <option value="$PROJECT_DIR$/js/models/processo.js" />
         <option value="$PROJECT_DIR$/js/models/movimentacaoModel.js" />
         <option value="$PROJECT_DIR$/js/app.js" />
-        <option value="$PROJECT_DIR$/js/models/processoModel.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/config/config.js" />
         <option value="$PROJECT_DIR$/js/services/processoDbSrv.js" />
         <option value="$PROJECT_DIR$/js/controllers/processoCtrl.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/services/processoSrv.js" />
+        <option value="$PROJECT_DIR$/js/models/processoModel.js" />
       </list>
     </option>
   </component>
@@ -386,7 +381,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18589744" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -414,7 +409,14 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="14" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/js/services/processoDbSrv.js</url>
+          <line>9</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -675,14 +677,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/config/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47738692" vertical-offset="0" max-vertical-offset="645">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/ionic/js/ionic-angular.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.8510275" vertical-offset="0" max-vertical-offset="194745">
@@ -705,41 +699,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25" vertical-offset="400" max-vertical-offset="960">
-          <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/services/dbSrv.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1215">
-          <caret line="6" column="15" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/services/utilSrv.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/models/movimentacaoModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.029126214" vertical-offset="0" max-vertical-offset="515">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/models/processoModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.058252428" vertical-offset="0" max-vertical-offset="570">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -752,14 +715,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/services/processoDbSrv.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15075377" vertical-offset="0" max-vertical-offset="1245">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/ionic/js/ionic.bundle.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3321918" vertical-offset="315721" max-vertical-offset="811800">
@@ -768,26 +723,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/processoCtrl.js">
+    <entry file="file://$PROJECT_DIR$/js/models/movimentacaoModel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="3210">
-          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/services/processoSrv.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1575" max-vertical-offset="2970">
-          <caret line="47" column="19" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="597">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9685864" vertical-offset="0" max-vertical-offset="855">
-          <caret line="37" column="37" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.18324608" vertical-offset="270" max-vertical-offset="855">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/config/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22613065" vertical-offset="0" max-vertical-offset="645">
+          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services/dbSrv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33163264" vertical-offset="695" max-vertical-offset="1215">
+          <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services/processoDbSrv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1245">
+          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5963303" vertical-offset="180" max-vertical-offset="960">
+          <caret line="25" column="61" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/processoCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="900" max-vertical-offset="3180">
+          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services/processoSrv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1679" max-vertical-offset="2970">
+          <caret line="120" column="63" selection-start-line="120" selection-start-column="49" selection-end-line="120" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/models/processoModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6237006" vertical-offset="0" max-vertical-offset="585">
+          <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
           <folding />
         </state>
       </provider>

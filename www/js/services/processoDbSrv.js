@@ -14,22 +14,22 @@ angular.module('myApp.services')
                     });
             };
 
-            self.processoEstaCadastrado = function (codProcesso) {
+            self.processoEstaCadastrado = function (numeroProcesso) {
 
-                return DB.query('SELECT * FROM processo WHERE codProcesso = ?',
-                    [codProcesso])
+                return DB.query('SELECT * FROM processo WHERE numeroProcesso = ?',
+                    [numeroProcesso])
                     .then(function (resultado) {
                         var dados = DB.fetch(resultado);
-                        return (dados && dados.length > 0);
+                        return (dados!= null)? (dados && dados.length > 0) : false;
                     },
                     function (razao) {
                         console.log('Falhou: ' + razao.message);
                     });
             };
 
-            self.editarProcesso = function (codProcesso, descricao) {
-                return DB.query('UPDATE processo SET descricao = ?  WHERE codProcesso = ?',
-                    [descricao, codProcesso])
+            self.editarProcesso = function (numeroProcesso, descricao) {
+                return DB.query('UPDATE processo SET descricao = ?  WHERE numeroProcesso = ?',
+                    [descricao, numeroProcesso])
                     .then(function (resultado) {
                         console.log("Atualizou " + resultado.rowsAffected + " registro(s) na tabela");
                     },
@@ -38,8 +38,8 @@ angular.module('myApp.services')
                     });
             };
 
-            self.removerProcesso = function (codProcesso) {
-                return DB.query('DELETE from processo WHERE codProcesso = ?', [codProcesso])
+            self.removerProcesso = function (numeroProcesso) {
+                return DB.query('DELETE from processo WHERE numeroProcesso = ?', [numeroProcesso])
                     .then(function (resultado) {
                         console.log("Removeu " + resultado.rowsAffected + " registro(s) na tabela.");
                     },
@@ -50,7 +50,7 @@ angular.module('myApp.services')
 
             self.inserirProcesso = function (numeroProcesso, descricao, dataUltimaMovimentacao, movimentacoes) {
 
-                return DB.query('INSERT INTO processo (codProcesso, descricao, dataUltimaMovimentacao, movimentacoes) VALUES (?,?,?,?)',
+                return DB.query('INSERT INTO processo (numeroProcesso, descricao, dataUltimaMovimentacao, movimentacoes) VALUES (?,?,?,?)',
                     [numeroProcesso, descricao, dataUltimaMovimentacao, movimentacoes])
                     .then(function (resultado) {
                         console.log("Inseriu registro com ID " + resultado.insertId + " na tabela");
@@ -63,7 +63,7 @@ angular.module('myApp.services')
 
             self.atualizarProcesso = function (dataUltimaMovimentacao, movimentacoes, numeroProcesso) {
 
-                return DB.query('UPDATE processo SET dataUltimaMovimentacao = ?, movimentacoes = ? WHERE codProcesso = ?',
+                return DB.query('UPDATE processo SET dataUltimaMovimentacao = ?, movimentacoes = ? WHERE numeroProcesso = ?',
                     [dataUltimaMovimentacao, movimentacoes, numeroProcesso])
                     .then(function (resultado) {
                         console.log("Atualizou " + resultado.rowsAffected + " registro(s) na tabela.");

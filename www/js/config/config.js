@@ -7,7 +7,7 @@ modConfig.constant('DB_CONFIG', {
                 name: 'processo',
                 columns: [
                     {name: 'id', type: 'integer primary key'},
-                    {name: 'codProcesso', type: 'text'},
+                    {name: 'numeroProcesso', type: 'text'},
                     {name: 'descricao', type: 'text'},
                     {name: 'dataUltimaMovimentacao', type: 'text'},
                     {name: 'movimentacoes', type: 'text'}
