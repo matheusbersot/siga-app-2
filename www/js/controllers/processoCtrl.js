@@ -1,83 +1,40 @@
 var modController = angular.module('myApp.controllers');
 
-modController.controller('HomeProcessoController', ['$scope', '$interval' /*'$cordovaLocalNotification',*/ ,'processoSrv', 'utilSrv',
-    function ($scope, $interval /*, $cordovaLocalNotification*/, processoSrv, utilSrv) {
+modController.controller('HomeProcessoController', ['$scope', '$interval',/*'$cordovaLocalNotification',*/'processoSrv', 'utilSrv', 'constanteSrv',
+    function ($scope, $interval, /*$cordovaLocalNotification, */processoSrv, utilSrv, constanteSrv) {
 
         $scope.umPorVez = true;
         $scope.listaProcessos = [];
         $scope.estiloAtualizado = {'background-color': '#FFFFFF'};
 
-        /*constantes*/
-        var TIPO_MOVIMENTACAO_TRANSFERENCIA = 3;
-        var TIPO_MOVIMENTACAO_DESPACHO_TRANSFERENCIA = 6;
-        var TIPO_MOVIMENTACAO_DESPACHO_INTERNO_TRANSFERENCIA = 8;
-        var TIPO_MOVIMENTACAO_TRANSFERENCIA_EXTERNA = 17;
-        var TIPO_MOVIMENTACAO_DESPACHO_TRANSFERENCIA_EXTERNA = 18;
-
-
         this.init = function () {
 
             processoSrv.buscarTodosProcessos()
-                .then(function (dadosProcessos) {
-                    $scope.listaProcessos = processoSrv.montarObjProcessos(dadosProcessos);
+                .then(function (resultado) {
+                    $scope.listaProcessos = resultado;
                 }
-            );
+            )
         };
 
         $scope.remover = function (codProcesso) {
 
-            var achou = false;
-            var i = 0;
-            while ((!achou) && (i < $scope.listaProcessos.length)) {
-                if ($scope.listaProcessos[i].numero == codProcesso) {
-                    $scope.listaProcessos.splice(i, 1);
-                    processoSrv.removerProcesso(codProcesso);
-                    achou = true;
-                }
-                ++i;
-            }
+            processoSrv.removerProcesso(codProcesso, $scope.listaProcessos);
+
+            //TODO: retornar msg de erro para usuario caso não consiga remover processo.
         };
 
         $scope.exibirTransferencia = function(idTipoMovimentacao)
         {
-            if ((idTipoMovimentacao == TIPO_MOVIMENTACAO_TRANSFERENCIA)
-            ||(idTipoMovimentacao == TIPO_MOVIMENTACAO_DESPACHO_TRANSFERENCIA)
-            ||(idTipoMovimentacao == TIPO_MOVIMENTACAO_DESPACHO_INTERNO_TRANSFERENCIA)
-            ||(idTipoMovimentacao == TIPO_MOVIMENTACAO_TRANSFERENCIA_EXTERNA)
-            ||(idTipoMovimentacao == TIPO_MOVIMENTACAO_DESPACHO_TRANSFERENCIA_EXTERNA))
+            if ((idTipoMovimentacao == constanteSrv.TIPO_MOVIMENTACAO_TRANSFERENCIA)
+                ||(idTipoMovimentacao == constanteSrv.TIPO_MOVIMENTACAO_DESPACHO_TRANSFERENCIA)
+                ||(idTipoMovimentacao == constanteSrv.TIPO_MOVIMENTACAO_DESPACHO_INTERNO_TRANSFERENCIA)
+                ||(idTipoMovimentacao == constanteSrv.TIPO_MOVIMENTACAO_TRANSFERENCIA_EXTERNA)
+                ||(idTipoMovimentacao == constanteSrv.TIPO_MOVIMENTACAO_DESPACHO_TRANSFERENCIA_EXTERNA))
             {
                 return true;
             }
             return false;
         };
-
-        /*var notificarUsuarioAtualizacaoProcessos = function()
-        {
-            for(var i = 0; i < $scope.listaProcessos.length; ++i)
-            {
-                if($scope.listaProcessos[i].atualizou)
-                {
-                    $cordovaLocalNotification.add({
-                        id: i,
-                        message:    "Descrição: " + $scope.listaProcessos[i].descricao,
-                        title:      'Atualização de Processo',
-                        autoCancel: true
-                    });
-                }
-            }
-        }*/
-
-        $scope.$watch(function () {
-            return processoSrv.atualizou;
-        }, function () {
-            if (processoSrv.atualizou) {
-                $scope.listaProcessos = processoSrv.listaProcessos;
-                processoSrv.listaProcessos = [];
-
-                //criar notificações
-                //notificarUsuarioAtualizacaoProcessos();
-            }
-        });
 
         $scope.reiniciarEstadoProcessos = function()
         {
@@ -98,25 +55,56 @@ modController.controller('HomeProcessoController', ['$scope', '$interval' /*'$co
             }
         };
 
+        /*var notificarUsuarioAtualizacaoProcessos = function()
+        {
+            for(var i = 0; i < $scope.listaProcessos.length; ++i)
+            {
+                if($scope.listaProcessos[i].atualizou)
+                {
+                    $cordovaLocalNotification.add({
+                        id: i,
+                        message:    "Descrição: " + $scope.listaProcessos[i].descricao,
+                        title:      'Atualização de Processo',
+                        autoCancel: true
+                    });
+                }
+            }
+        }*/
+
+        /*$scope.$watch(function () {
+            return processoSrv.atualizou;
+        }, function () {
+            if (processoSrv.atualizou) {
+                $scope.listaProcessos = processoSrv.listaProcessos;
+                processoSrv.listaProcessos = [];
+
+                //criar notificações
+                //notificarUsuarioAtualizacaoProcessos();
+            }
+        });
+
         $scope.atualizarTodosProcessos = function(){
+
             utilSrv.mostrarPaginaComMensagem("Atualizando...");
 
-            //$interval(function() { processoSrv.atualizarTodosProcessos($scope.listaProcessos); } ,0, 1);
-            var promise_teste = $interval(function() { for(var i=0; i< 100000; ++i) {var a = i*2;} } , 0, 1);
-            //var promise_teste = $interval(function() { processoSrv.atualizarTodosProcessos($scope.listaProcessos); } , 0, 1);
-            promise_teste.then(function(){
+            var promiseAtualizacao = processoSrv.atualizarTodosProcessos($scope.listaProcessos);
+            promiseAtualizacao.then(function(){
                 utilSrv.esconderPagina();
-            })
-        };
-
-        this.init();
+            },function(razaoErro)
+                {
+                    utilSrv.esconderPagina();
+                }
+            );
+        };*/
 
         var promiseAtualizarTodosProcessos;
-        promiseAtualizarTodosProcessos= $interval(function() { processoSrv.atualizarTodosProcessos($scope.listaProcessos); } ,10000); //60s
+        promiseAtualizarTodosProcessos= $interval(function() { processoSrv.atualizarTodosProcessos($scope.listaProcessos); } ,10000); //10s
 
         $scope.$on('$destroy', function() {
             $interval.cancel(promiseAtualizarTodosProcessos);
         });
+
+        this.init();
 
     }]);
 
@@ -163,8 +151,6 @@ modController.controller('CadastrarProcessoController', ['$scope', '$state', '$i
 
             utilSrv.mostrarPaginaComMensagem("Cadastrando processo...");
 
-            var resposta = processoSrv.buscarProcessoSIGA();
-
             processoSrv.buscarProcessoSIGA($scope.numProcesso)
                 .then(function(resposta) {
 
@@ -196,7 +182,13 @@ modController.controller('CadastrarProcessoController', ['$scope', '$state', '$i
                         $scope.mensagem = respostaJson.erro;
                         $scope.openModal();
                     }
-                });
+                },
+                function(razaoErro) {
+                    utilSrv.esconderPagina();
+                    $scope.mensagem = razaoErro;
+                    $scope.openModal();
+                }
+            );
         };
     }]);
 

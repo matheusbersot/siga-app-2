@@ -2,6 +2,7 @@
 
 // Inicializando módulos
 angular.module('myApp.config', []);
+angular.module('myApp.models', []);
 angular.module('myApp.services', []);
 angular.module('myApp.controllers', []);
 
@@ -9,29 +10,7 @@ angular.module('myApp.controllers', []);
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 
-angular.module('myApp', ['ionic', /*'ngCordova',*/'ui.router', 'ui.bootstrap', 'ui.mask', 'myApp.controllers', 'myApp.services', 'myApp.config'])
-
-    .config(function ($stateProvider, $urlRouterProvider) {
-
-        $stateProvider
-            .state('home', {
-                url: '/home',
-                templateUrl: 'home.html',
-                cache: false
-            })
-            .state('cadastrar', {
-                url: '/cadastrar',
-                templateUrl: 'cadastrar.html',
-                cache: false
-            })
-            .state('editar', {
-                url: '/editar/:numProcesso/:descricao',
-                templateUrl: 'editar.html',
-                cache: false
-            });
-
-    })
-
+angular.module('myApp', ['ionic', /*'ngCordova',*/'ui.router', 'ui.bootstrap', 'ui.mask', 'myApp.controllers', 'myApp.services', 'myApp.models','myApp.config'])
 
     .run(function ($ionicPlatform, DB, $state/*, $cordovaSplashscreen*/) {
         $ionicPlatform.ready(function () {
