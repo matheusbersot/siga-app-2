@@ -7,7 +7,7 @@ modConfig.constant('DB_CONFIG', {
                 name: 'processo',
                 columns: [
                     {name: 'id', type: 'integer primary key'},
-                    {name: 'codProcesso', type: 'text'},
+                    {name: 'numeroProcesso', type: 'text'},
                     {name: 'descricao', type: 'text'},
                     {name: 'dataUltimaMovimentacao', type: 'text'},
                     {name: 'movimentacoes', type: 'text'}
@@ -15,3 +15,24 @@ modConfig.constant('DB_CONFIG', {
             }
         ]
     });
+
+modConfig.config(function ($stateProvider) {
+
+    $stateProvider
+        .state('home', {
+            url: '/home',
+            templateUrl: 'home.html',
+            cache: false
+        })
+        .state('cadastrar', {
+            url: '/cadastrar',
+            templateUrl: 'cadastrar.html',
+            cache: false
+        })
+        .state('editar', {
+            url: '/editar/:numProcesso/:descricao',
+            templateUrl: 'editar.html',
+            cache: false
+        });
+
+});

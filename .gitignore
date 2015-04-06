@@ -1,4 +1,4 @@
 /.name
 /dist
 /node_modules
-/platforms
+/platforms/**
