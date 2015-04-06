@@ -1,7 +1,8 @@
 var modController = angular.module('myApp.controllers');
 
-modController.controller('HomeProcessoController', ['$scope', '$interval',/*'$cordovaLocalNotification',*/'processoSrv', 'utilSrv', 'constanteSrv',
-    function ($scope, $interval, /*$cordovaLocalNotification, */processoSrv, utilSrv, constanteSrv) {
+modController.controller('HomeProcessoController', ['$scope', '$interval','$cordovaLocalNotification','processoSrv', 'utilSrv',
+    'constanteSrv',
+    function ($scope, $interval, $cordovaLocalNotification, processoSrv, utilSrv, constanteSrv) {
 
         $scope.umPorVez = true;
         $scope.listaProcessos = [];
@@ -73,18 +74,14 @@ modController.controller('HomeProcessoController', ['$scope', '$interval',/*'$co
 
         $scope.atualizarTodosProcessos = function(){
 
-            utilSrv.mostrarPaginaComMensagem("Atualizando...");
+            utilSrv.exibirMensagem("Atualizando...");
 
             processoSrv.atualizarTodosProcessos($scope.listaProcessos)
                 .then(function(){
-                    utilSrv.esconderPagina();
+                    utilSrv.esconderMensagem();
 
-                    //criar notificações
-                    //notificarUsuarioAtualizacaoProcessos();
-
-                },function(msgErro)
-                    {
-                        utilSrv.esconderPagina();
+                },function(msgErro){
+                        utilSrv.esconderMensagem();
                     }
                 );
         };
@@ -147,7 +144,7 @@ modController.controller('CadastrarProcessoController', ['$scope', '$state', '$i
 
         $scope.salvar = function () {
 
-            utilSrv.mostrarPaginaComMensagem("Cadastrando processo...");
+            utilSrv.exibirMensagem("Cadastrando processo...");
 
             processoSrv.buscarProcessoSIGA($scope.numProcesso)
                 .then(function(resposta) {
@@ -162,7 +159,7 @@ modController.controller('CadastrarProcessoController', ['$scope', '$state', '$i
                         processoSrv.processoEstaCadastrado($scope.numProcesso)
                             .then(function (estaCadastrado) {
 
-                                utilSrv.esconderPagina();
+                                utilSrv.esconderMensagem();
 
                                 if (!estaCadastrado) {
                                     processoSrv.inserirProcesso($scope.numProcesso, $scope.descricao, dataUltimaMovimentacao, movimentacoes);
@@ -172,18 +169,24 @@ modController.controller('CadastrarProcessoController', ['$scope', '$state', '$i
                                     $scope.mensagem = "Esse processo já se encontra cadastrado!";
                                     $scope.openModal();
                                 }
+                            },
+                            function(msgErro)
+                            {
+                                utilSrv.esconderMensagem();
+                                $scope.mensagem = msgErro;
+                                $scope.openModal();
                             }
                         );
                     }
                     else {
-                        utilSrv.esconderPagina();
+                        utilSrv.esconderMensagem();
                         $scope.mensagem = respostaJson.erro;
                         $scope.openModal();
                     }
                 },
-                function(razaoErro) {
-                    utilSrv.esconderPagina();
-                    $scope.mensagem = razaoErro;
+                function(msgErro) {
+                    utilSrv.esconderMensagem();
+                    $scope.mensagem = msgErro;
                     $scope.openModal();
                 }
             );

@@ -1,6 +1,6 @@
 angular.module('myApp.services')
-    .factory('processoSrv', ['$q', /*'$cordovaNetwork', */ 'utilSrv', 'processoDbSrv', 'Processo',
-        function ($q , /*$cordovaNetwork,*/ utilSrv, processoDbSrv, Processo){
+    .factory('processoSrv', ['$q', '$timeout','$cordovaNetwork', 'utilSrv', 'processoDbSrv', 'constanteSrv', 'Processo',
+        function ($q , $timeout, $cordovaNetwork, utilSrv, processoDbSrv, constanteSrv, Processo){
 
         var self = this;
 
@@ -8,20 +8,36 @@ angular.module('myApp.services')
 
             var deferred = $q.defer();
 
-            //if ($cordovaNetwork.isOnline())
-            //{
+            if ($cordovaNetwork.isOnline())
+            {
                 // buscar movimentacoes do processo //
                 var url = "https://sistemas.uff.br/sigaex/servicos/ExService";
 
                 var params = new SOAPClientParameters();
                 params.add("numeroProcesso", numeroProcesso);
 
-                deferred.resolve(SOAPClient.invoke(url, "consultaMovimentacaoProcesso", params, false, null));
-            //}
-            //else
-            //{
-            //  deferred.reject("Não há conexão com a internet!");
-            //}
+                $timeout(function() {
+                           try{
+                               return SOAPClient.invoke(url, "consultaMovimentacaoProcesso", params, false, null);
+                           }catch(err)
+                           {
+                               deferred.reject(err.message);
+                           };
+                        } , constanteSrv.TIMEOUT_EXECUCAO_WEBSERVICE)
+                    .then(function(resposta)
+                    {
+                        deferred.resolve(resposta);
+                    },
+                    function(msgErro)
+                    {
+                        deferred.reject(msgErro);
+                    });
+
+            }
+            else
+            {
+              deferred.reject("Não há conexão com a internet!");
+            }
 
             return deferred.promise;
         };
@@ -122,7 +138,7 @@ angular.module('myApp.services')
 
             var deferred = $q.defer();
 
-            if(utilSrv.estaNoHorarioComercial()){
+            if(utilSrv.estaNoHorarioComercial() && vetorProcessos.length > 0){
 
                 for (var i = 0; i < vetorProcessos.length; ++i) {
 
@@ -136,6 +152,11 @@ angular.module('myApp.services')
                     });
                 }
             }
+            else
+            {
+                deferred.reject("Não está no horário comercial!");
+            }
+
             return deferred.promise;
         };
 

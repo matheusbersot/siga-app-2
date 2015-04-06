@@ -19,14 +19,14 @@ angular.module('myApp.services')
             return false;
         }
 
-        self.mostrarPaginaComMensagem = function(msg)
+        self.exibirMensagem = function(msg)
         {
             $ionicLoading.show({
                 template: "<ion-spinner></ion-spinner><br/>"+ msg
             });
         }
 
-        self.esconderPagina = function(){
+        self.esconderMensagem = function(){
             $ionicLoading.hide();
         };
 

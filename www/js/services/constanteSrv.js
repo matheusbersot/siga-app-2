@@ -8,5 +8,7 @@ angular.module('myApp.services')
         this.TIPO_MOVIMENTACAO_TRANSFERENCIA_EXTERNA = 17;
         this.TIPO_MOVIMENTACAO_DESPACHO_TRANSFERENCIA_EXTERNA = 18;
 
+        this.TIMEOUT_EXECUCAO_WEBSERVICE = 5000; //5s  = 5000 ms
+
         return this;
     });
