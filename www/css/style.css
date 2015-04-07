@@ -110,37 +110,3 @@ font-family: "Courier New", Courier, monospace;
     margin: 0 0 10px;
     white-space: normal
 }
-
-@media (min-width: 50px) {
-    .modal {
-        top: 30%;
-        right: 20%;
-        bottom: 30%;
-        left: 20%;
-        overflow: visible;
-        min-height: 240px;
-        width: 60%; }
-    .modal.ng-leave-active {
-        bottom: 0; }
-    .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {
-        height: 44px; }
-    .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {
-        margin-top: 0; }
-    .platform-ios.platform-cordova .modal-wrapper .modal .tabs-top > .tabs, .platform-ios.platform-cordova .modal-wrapper .modal .tabs.tabs-top {
-        top: 44px; }
-    .platform-ios.platform-cordova .modal-wrapper .modal .has-header, .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {
-        top: 44px; }
-    .platform-ios.platform-cordova .modal-wrapper .modal .has-subheader {
-        top: 88px; }
-    .platform-ios.platform-cordova .modal-wrapper .modal .has-tabs-top {
-        top: 93px; }
-    .platform-ios.platform-cordova .modal-wrapper .modal .has-header.has-subheader.has-tabs-top {
-        top: 137px; }
-    .modal-backdrop {
-        -webkit-transition: background-color 300ms ease-in-out;
-        transition: background-color 300ms ease-in-out;
-        background-color: rgba(0, 0, 0, 0); }
-    .modal-backdrop.active {
-        background-color: rgba(0, 0, 0, 0.5); }
-}
-

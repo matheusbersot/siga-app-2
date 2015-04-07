@@ -19,6 +19,8 @@
     "https://github.com/brodysoft/Cordova-SQLitePlugin.git",
     "org.apache.cordova.splashscreen",
     "org.apache.cordova.network-information",
-    "https://github.com/katzer/cordova-plugin-local-notifications"
+    "https://github.com/katzer/cordova-plugin-local-notifications",
+    "https://github.com/katzer/cordova-plugin-background-mode.git",
+    "org.apache.cordova.dialogs"
   ]
 }

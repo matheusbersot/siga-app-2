@@ -21,7 +21,6 @@ modController.controller('HomeProcessoController', ['$scope', '$interval','$cord
 
             processoSrv.removerProcesso(numeroProcesso, $scope.listaProcessos);
 
-            //TODO: retornar msg de erro para usuario caso não consiga remover processo.
         };
 
         $scope.exibirTransferencia = function(idTipoMovimentacao)
@@ -56,7 +55,7 @@ modController.controller('HomeProcessoController', ['$scope', '$interval','$cord
             }
         };
 
-        /*var notificarUsuarioAtualizacaoProcessos = function()
+        var notificarUsuarioAtualizacaoProcessos = function()
         {
             for(var i = 0; i < $scope.listaProcessos.length; ++i)
             {
@@ -70,7 +69,7 @@ modController.controller('HomeProcessoController', ['$scope', '$interval','$cord
                     });
                 }
             }
-        }*/
+        }
 
         $scope.atualizarTodosProcessos = function(){
 
@@ -90,8 +89,8 @@ modController.controller('HomeProcessoController', ['$scope', '$interval','$cord
             function() {
                 processoSrv.atualizarTodosProcessos($scope.listaProcessos)
                     .then( function(){
-                        //criar notificações
-                       //notificarUsuarioAtualizacaoProcessos();
+                       //criar notificações
+                       notificarUsuarioAtualizacaoProcessos();
                     });
             } ,10000); //10s
 
@@ -118,29 +117,11 @@ modController.controller('EditarProcessoController', ['$scope', '$stateParams', 
     }]);
 
 
-modController.controller('CadastrarProcessoController', ['$scope', '$state', '$ionicModal', 'processoSrv', 'utilSrv',
-    function ($scope, $state, $ionicModal, processoSrv, utilSrv) {
+modController.controller('CadastrarProcessoController', ['$scope', '$state', '$cordovaDialogs', 'processoSrv', 'utilSrv',
+    function ($scope, $state, $cordovaDialogs, processoSrv, utilSrv) {
 
         $scope.numProcesso = "";
         $scope.descricao = "";
-        $scope.mensagem = "";
-
-        $ionicModal.fromTemplateUrl('modalAlerta.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.modal = modal;
-        });
-        $scope.openModal = function() {
-            $scope.modal.show();
-        };
-        $scope.closeModal = function() {
-            $scope.modal.hide();
-        };
-        //Cleanup the modal when we're done with it!
-        $scope.$on('$destroy', function() {
-            $scope.modal.remove();
-        });
 
         $scope.salvar = function () {
 
@@ -166,28 +147,24 @@ modController.controller('CadastrarProcessoController', ['$scope', '$state', '$i
                                     $state.go("home");
                                 }
                                 else {
-                                    $scope.mensagem = "Esse processo já se encontra cadastrado!";
-                                    $scope.openModal();
+                                    $cordovaDialogs.alert("Esse processo já se encontra cadastrado!",'Erro', 'Ok');
                                 }
                             },
                             function(msgErro)
                             {
                                 utilSrv.esconderMensagem();
-                                $scope.mensagem = msgErro;
-                                $scope.openModal();
+                                $cordovaDialogs.alert(msgErro,'Erro', 'Ok');
                             }
                         );
                     }
                     else {
                         utilSrv.esconderMensagem();
-                        $scope.mensagem = respostaJson.erro;
-                        $scope.openModal();
+                        $cordovaDialogs.alert(respostaJson.erro,'Erro', 'Ok');
                     }
                 },
                 function(msgErro) {
                     utilSrv.esconderMensagem();
-                    $scope.mensagem = msgErro;
-                    $scope.openModal();
+                    $cordovaDialogs.alert(msgErro,'Erro', 'Ok');
                 }
             );
         };

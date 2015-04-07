@@ -1,6 +1,6 @@
 angular.module('myApp.services')
-    .factory('processoSrv', ['$q', '$timeout','$cordovaNetwork', 'utilSrv', 'processoDbSrv', 'constanteSrv', 'Processo',
-        function ($q , $timeout, $cordovaNetwork, utilSrv, processoDbSrv, constanteSrv, Processo){
+    .factory('processoSrv', ['$q', '$timeout'/*,'$cordovaNetwork'*/, 'utilSrv', 'processoDbSrv', 'constanteSrv', 'Processo',
+        function ($q , $timeout/*, $cordovaNetwork*/, utilSrv, processoDbSrv, constanteSrv, Processo){
 
         var self = this;
 
@@ -8,10 +8,10 @@ angular.module('myApp.services')
 
             var deferred = $q.defer();
 
-            if ($cordovaNetwork.isOnline())
-            {
+            //if ($cordovaNetwork.isOnline())
+            //{
                 // buscar movimentacoes do processo //
-                var url = "https://sistemas.uff.br/sigaex/servicos/ExService";
+                var url = "https://sistemas.uff.br/sigaex/servicos/ExServic";
 
                 var params = new SOAPClientParameters();
                 params.add("numeroProcesso", numeroProcesso);
@@ -33,11 +33,11 @@ angular.module('myApp.services')
                         deferred.reject(msgErro);
                     });
 
-            }
+            /*}
             else
             {
               deferred.reject("Não há conexão com a internet!");
-            }
+            }*/
 
             return deferred.promise;
         };
